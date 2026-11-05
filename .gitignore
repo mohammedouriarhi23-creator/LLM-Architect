@@ -1,0 +1,30 @@
+# Python virtual environments & caches
+.venv/
+.venv-unsloth/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+unsloth_compiled_cache/
+
+# Node / Next.js
+node_modules/
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+
+# Large model weights & training checkpoints (>100MB GitHub limit)
+*.gguf
+*.safetensors
+*.pt
+*.pth
+*.bin
+finetuning/outputs/lora_adapter/checkpoint-*/
+finetuning/outputs/lora_adapter/tokenizer.json
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*

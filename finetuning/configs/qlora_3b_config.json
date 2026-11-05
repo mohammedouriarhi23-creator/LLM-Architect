@@ -1,0 +1,39 @@
+{
+  "supported_base_models": {
+    "llama-3.2-3b": "unsloth/Llama-3.2-3B-Instruct-bnb-4bit",
+    "qwen-2.5-3b": "unsloth/Qwen2.5-3B-Instruct-bnb-4bit"
+  },
+  "default_model_key": "qwen-2.5-3b",
+  "max_seq_length": 4096,
+  "load_in_4bit": true,
+  "lora": {
+    "r": 16,
+    "lora_alpha": 16,
+    "lora_dropout": 0.0,
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ]
+  },
+  "training": {
+    "per_device_train_batch_size": 2,
+    "gradient_accumulation_steps": 4,
+    "warmup_steps": 5,
+    "max_steps": 60,
+    "learning_rate": 0.0002,
+    "logging_steps": 5,
+    "optim": "adamw_8bit",
+    "weight_decay": 0.01,
+    "lr_scheduler_type": "linear",
+    "seed": 3407
+  },
+  "gguf_export": {
+    "quantization_method": "q4_k_m",
+    "output_dir": "outputs/llm_architect_gguf"
+  }
+}

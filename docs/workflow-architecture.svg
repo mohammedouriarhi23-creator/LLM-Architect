@@ -1,0 +1,276 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 820" width="100%" height="100%" font-family="Inter, Segoe UI, system-ui, -apple-system, sans-serif">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070a12"/>
+      <stop offset="50%" stop-color="#0d1322"/>
+      <stop offset="100%" stop-color="#090d18"/>
+    </linearGradient>
+
+    <!-- Stage Header Gradients -->
+    <linearGradient id="stage1Grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="stage2Grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="stage3Grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#ea580c"/>
+    </linearGradient>
+    <linearGradient id="stage4Grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+
+    <!-- Drop Shadow -->
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.55"/>
+    </filter>
+
+    <!-- Arrow Markers -->
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrowPurple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#a78bfa"/>
+    </marker>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399"/>
+    </marker>
+  </defs>
+
+  <!-- Main Canvas Background -->
+  <rect width="1280" height="820" fill="url(#bgGrad)"/>
+
+  <!-- Subtle Grid Lines -->
+  <g stroke="#1e293b" stroke-width="0.6" opacity="0.45">
+    <line x1="0" y1="110" x2="1280" y2="110"/>
+    <line x1="320" y1="110" x2="320" y2="760"/>
+    <line x1="640" y1="110" x2="640" y2="760"/>
+    <line x1="960" y1="110" x2="960" y2="760"/>
+  </g>
+
+  <!-- Title Banner -->
+  <text x="45" y="52" fill="#f8fafc" font-size="26" font-weight="800" letter-spacing="0.5">
+    LLMarchitect — End-to-End System Architecture &amp; Data Pipeline
+  </text>
+  <text x="45" y="80" fill="#94a3b8" font-size="14">
+    Live Multi-Source Scraping  ➔  SQLite &amp; VRAM/TCO Scoring Engine  ➔  Unsloth 3B QLoRA Fine-Tuning  ➔  LM Studio Local GGUF Server &amp; Next.js 15 UI
+  </text>
+  <rect x="1050" y="34" width="185" height="36" rx="18" fill="#1e1b4b" stroke="#6366f1" stroke-width="1.5"/>
+  <text x="1142" y="57" fill="#c7d2fe" font-size="12" font-weight="700" text-anchor="middle">
+    6–8 GB VRAM Optimized
+  </text>
+
+  <!-- ======================================================================= -->
+  <!-- STAGE 1: LIVE DATA & BENCHMARK SCRAPING                                 -->
+  <!-- ======================================================================= -->
+  <g filter="url(#shadow)">
+    <rect x="30" y="130" width="265" height="590" rx="14" fill="#0f172a" stroke="#1e293b" stroke-width="1.5"/>
+    <rect x="30" y="130" width="265" height="46" rx="14" fill="url(#stage1Grad)"/>
+    <text x="162" y="159" fill="#ffffff" font-size="14" font-weight="700" text-anchor="middle">
+      1. LIVE BENCHMARK SCRAPERS
+    </text>
+
+    <!-- Box 1A: Hugging Face -->
+    <rect x="48" y="198" width="229" height="125" rx="10" fill="#131c31" stroke="#0284c7" stroke-width="1.2"/>
+    <text x="64" y="222" fill="#38bdf8" font-size="13" font-weight="700">Hugging Face Hub &amp; Leaderboard</text>
+    <text x="64" y="242" fill="#cbd5e1" font-size="11">• Open LLM Leaderboard v2 API</text>
+    <text x="64" y="260" fill="#cbd5e1" font-size="11">• MMLU-PRO, MATH Lvl 5, BBH, GPQA</text>
+    <text x="64" y="278" fill="#cbd5e1" font-size="11">• Unsloth 4-bit dynamic models</text>
+    <text x="64" y="302" fill="#64748b" font-size="10" font-family="Consolas, monospace">huggingface_scraper.py</text>
+
+    <!-- Box 1B: OpenRouter Live API -->
+    <rect x="48" y="343" width="229" height="125" rx="10" fill="#131c31" stroke="#0284c7" stroke-width="1.2"/>
+    <text x="64" y="367" fill="#38bdf8" font-size="13" font-weight="700">OpenRouter Live Catalog API</text>
+    <text x="64" y="387" fill="#cbd5e1" font-size="11">• /api/v1/models live endpoint</text>
+    <text x="64" y="405" fill="#cbd5e1" font-size="11">• Real-time $/1M Input &amp; Output price</text>
+    <text x="64" y="423" fill="#cbd5e1" font-size="11">• Context window &amp; modality metadata</text>
+    <text x="64" y="447" fill="#64748b" font-size="10" font-family="Consolas, monospace">openrouter_scraper.py</text>
+
+    <!-- Box 1C: Artificial Analysis -->
+    <rect x="48" y="488" width="229" height="125" rx="10" fill="#131c31" stroke="#0284c7" stroke-width="1.2"/>
+    <text x="64" y="512" fill="#38bdf8" font-size="13" font-weight="700">Artificial Analysis Scraper</text>
+    <text x="64" y="532" fill="#cbd5e1" font-size="11">• Median throughput (tokens/sec)</text>
+    <text x="64" y="550" fill="#cbd5e1" font-size="11">• Time-to-First-Token (TTFT latency)</text>
+    <text x="64" y="568" fill="#cbd5e1" font-size="11">• Coding &amp; Reasoning index scores</text>
+    <text x="64" y="592" fill="#64748b" font-size="10" font-family="Consolas, monospace">artificial_analysis_scraper.py</text>
+
+    <!-- Box 1D: VRAM Footprints -->
+    <rect x="48" y="630" width="229" height="72" rx="10" fill="#0c192c" stroke="#38bdf8" stroke-dasharray="4 3" stroke-width="1.2"/>
+    <text x="64" y="653" fill="#7dd3fc" font-size="12" font-weight="700">VRAM Footprint Calculator</text>
+    <text x="64" y="671" fill="#94a3b8" font-size="11">Computes Q4_K_M, Q8_0, FP16 + KV</text>
+    <text x="64" y="689" fill="#64748b" font-size="10" font-family="Consolas, monospace">vram_utils.py</text>
+  </g>
+
+  <!-- ======================================================================= -->
+  <!-- STAGE 2: FASTAPI CORE & SQLITE PERSISTENCE                              -->
+  <!-- ======================================================================= -->
+  <g filter="url(#shadow)">
+    <rect x="345" y="130" width="275" height="590" rx="14" fill="#0f172a" stroke="#1e293b" stroke-width="1.5"/>
+    <rect x="345" y="130" width="275" height="46" rx="14" fill="url(#stage2Grad)"/>
+    <text x="482" y="159" fill="#ffffff" font-size="14" font-weight="700" text-anchor="middle">
+      2. FASTAPI &amp; SQLITE ENGINE
+    </text>
+
+    <!-- Box 2A: ScraperManager -->
+    <rect x="363" y="198" width="239" height="95" rx="10" fill="#161832" stroke="#6366f1" stroke-width="1.2"/>
+    <text x="379" y="222" fill="#a5b4fc" font-size="13" font-weight="700">ScraperManager Deduplicator</text>
+    <text x="379" y="242" fill="#cbd5e1" font-size="11">• Merges models across 3 sources</text>
+    <text x="379" y="260" fill="#cbd5e1" font-size="11">• Enriches pricing + leaderboard stats</text>
+    <text x="379" y="278" fill="#64748b" font-size="10" font-family="Consolas, monospace">POST /api/scrape (manager.py)</text>
+
+    <!-- Box 2B: SQLite Database -->
+    <rect x="363" y="313" width="239" height="145" rx="10" fill="#161832" stroke="#8b5cf6" stroke-width="1.5"/>
+    <text x="379" y="337" fill="#c4b5fd" font-size="13" font-weight="700">SQLite Persistence (llmarchitect.db)</text>
+    <text x="379" y="358" fill="#cbd5e1" font-size="11">• models (75+ indexed specs &amp; VRAM)</text>
+    <text x="379" y="376" fill="#cbd5e1" font-size="11">• scrape_runs (audit history)</text>
+    <text x="379" y="394" fill="#cbd5e1" font-size="11">• evaluations (saved project reports)</text>
+    <text x="379" y="412" fill="#cbd5e1" font-size="11">• finetune_jobs (step logs &amp; GGUFs)</text>
+    <text x="379" y="438" fill="#64748b" font-size="10" font-family="Consolas, monospace">backend/app/database.py</text>
+
+    <!-- Box 2C: Multi-Metric Recommender -->
+    <rect x="363" y="478" width="239" height="224" rx="10" fill="#161832" stroke="#6366f1" stroke-width="1.2"/>
+    <text x="379" y="502" fill="#a5b4fc" font-size="13" font-weight="700">Recommender &amp; TCO Engine</text>
+    <text x="379" y="524" fill="#cbd5e1" font-size="11">1. Hardware Score:</text>
+    <text x="392" y="541" fill="#94a3b8" font-size="10.5">Matches GPU VRAM to FP16/Q8/Q4_K_M</text>
+    <text x="379" y="562" fill="#cbd5e1" font-size="11">2. Task Benchmark Score:</text>
+    <text x="392" y="579" fill="#94a3b8" font-size="10.5">Weights Coding, Reasoning, Math, RAG</text>
+    <text x="379" y="600" fill="#cbd5e1" font-size="11">3. Monthly TCO Estimator:</text>
+    <text x="392" y="617" fill="#94a3b8" font-size="10.5">Calculates $/mo API vs Local $0 GPU</text>
+    <text x="379" y="640" fill="#cbd5e1" font-size="11">4. Hybrid Synthesis:</text>
+    <text x="392" y="657" fill="#94a3b8" font-size="10.5">Calls Fine-Tuned LM Studio Advisor</text>
+    <text x="379" y="685" fill="#64748b" font-size="10" font-family="Consolas, monospace">POST /api/recommend (recommender.py)</text>
+  </g>
+
+  <!-- ======================================================================= -->
+  <!-- STAGE 3: UNSLOTH 3B QLoRA & LM STUDIO PIPELINE                          -->
+  <!-- ======================================================================= -->
+  <g filter="url(#shadow)">
+    <rect x="670" y="130" width="275" height="590" rx="14" fill="#0f172a" stroke="#1e293b" stroke-width="1.5"/>
+    <rect x="670" y="130" width="275" height="46" rx="14" fill="url(#stage3Grad)"/>
+    <text x="807" y="159" fill="#ffffff" font-size="14" font-weight="700" text-anchor="middle">
+      3. UNSLOTH + LM STUDIO LOOP
+    </text>
+
+    <!-- Box 3A: Dataset Generator -->
+    <rect x="688" y="198" width="239" height="125" rx="10" fill="#231915" stroke="#f59e0b" stroke-width="1.2"/>
+    <text x="704" y="222" fill="#fcd34d" font-size="13" font-weight="700">ShareGPT Dataset Synthesizer</text>
+    <text x="704" y="242" fill="#cbd5e1" font-size="11">• Generates realistic project prompts</text>
+    <text x="704" y="260" fill="#cbd5e1" font-size="11">• Grounds answers in scraped SQLite DB</text>
+    <text x="704" y="278" fill="#cbd5e1" font-size="11">• Enriches rationale via LM Studio</text>
+    <text x="704" y="303" fill="#fbbf24" font-size="10" font-family="Consolas, monospace">llm_advisor_train.jsonl</text>
+
+    <!-- Box 3B: Unsloth 3B QLoRA Trainer -->
+    <rect x="688" y="343" width="239" height="165" rx="10" fill="#231915" stroke="#f97316" stroke-width="1.5"/>
+    <text x="704" y="367" fill="#fdba74" font-size="13" font-weight="700">Unsloth 4-Bit QLoRA Trainer</text>
+    <text x="704" y="388" fill="#cbd5e1" font-size="11">• Base: Qwen2.5-3B / Llama-3.2-3B</text>
+    <text x="704" y="406" fill="#cbd5e1" font-size="11">• LoRA r=16, alpha=16, 4-bit BnB</text>
+    <text x="704" y="424" fill="#cbd5e1" font-size="11">• Fits on 6–8GB consumer GPUs</text>
+    <text x="704" y="442" fill="#cbd5e1" font-size="11">• Exports quantized GGUF (Q4_K_M)</text>
+    <text x="704" y="468" fill="#fb923c" font-size="10" font-family="Consolas, monospace">finetuning/train_unsloth.py</text>
+    <text x="704" y="486" fill="#64748b" font-size="10" font-family="Consolas, monospace">POST /api/finetune/run</text>
+
+    <!-- Box 3C: LM Studio Local Server -->
+    <rect x="688" y="528" width="239" height="174" rx="10" fill="#1c241e" stroke="#10b981" stroke-width="1.5"/>
+    <text x="704" y="552" fill="#6ee7b7" font-size="13" font-weight="700">LM Studio Server (:1234/v1)</text>
+    <text x="704" y="573" fill="#cbd5e1" font-size="11">• Loads exported .gguf advisor model</text>
+    <text x="704" y="591" fill="#cbd5e1" font-size="11">• OpenAI-compatible REST API</text>
+    <text x="704" y="609" fill="#cbd5e1" font-size="11">• Auto-discovered via /v1/models</text>
+    <text x="704" y="627" fill="#cbd5e1" font-size="11">• Dual Role:</text>
+    <text x="716" y="645" fill="#94a3b8" font-size="10.5">1) Teacher for synthetic JSONL</text>
+    <text x="716" y="661" fill="#94a3b8" font-size="10.5">2) Live Project Architecture Advisor</text>
+    <text x="704" y="685" fill="#64748b" font-size="10" font-family="Consolas, monospace">lmstudio_client.py</text>
+  </g>
+
+  <!-- ======================================================================= -->
+  <!-- STAGE 4: NEXT.JS 15 FRONTEND STUDIO                                     -->
+  <!-- ======================================================================= -->
+  <g filter="url(#shadow)">
+    <rect x="990" y="130" width="260" height="590" rx="14" fill="#0f172a" stroke="#1e293b" stroke-width="1.5"/>
+    <rect x="990" y="130" width="260" height="46" rx="14" fill="url(#stage4Grad)"/>
+    <text x="1120" y="159" fill="#ffffff" font-size="14" font-weight="700" text-anchor="middle">
+      4. NEXT.JS 15 WEB STUDIO (:3000)
+    </text>
+
+    <!-- Tab 1 -->
+    <rect x="1008" y="198" width="224" height="118" rx="10" fill="#112224" stroke="#10b981" stroke-width="1.2"/>
+    <text x="1024" y="222" fill="#34d399" font-size="13" font-weight="700">Tab 1: Project LLM Advisor</text>
+    <text x="1024" y="242" fill="#cbd5e1" font-size="11">• Input VRAM, budget, context, tasks</text>
+    <text x="1024" y="260" fill="#cbd5e1" font-size="11">• Ranked cards + Q4/Q8 VRAM fit</text>
+    <text x="1024" y="278" fill="#cbd5e1" font-size="11">• Monthly API TCO &amp; LM Studio advice</text>
+    <text x="1024" y="298" fill="#64748b" font-size="10" font-family="Consolas, monospace">src/app/page.tsx</text>
+
+    <!-- Tab 2 -->
+    <rect x="1008" y="334" width="224" height="105" rx="10" fill="#112224" stroke="#10b981" stroke-width="1.2"/>
+    <text x="1024" y="358" fill="#34d399" font-size="13" font-weight="700">Tab 2: Live Benchmark Catalog</text>
+    <text x="1024" y="378" fill="#cbd5e1" font-size="11">• Search &amp; filter 75+ scraped models</text>
+    <text x="1024" y="396" fill="#cbd5e1" font-size="11">• Filter by Max VRAM &amp; Open-Weights</text>
+    <text x="1024" y="414" fill="#cbd5e1" font-size="11">• One-click live scraper trigger</text>
+
+    <!-- Tab 3 -->
+    <rect x="1008" y="457" width="224" height="118" rx="10" fill="#112224" stroke="#10b981" stroke-width="1.2"/>
+    <text x="1024" y="481" fill="#34d399" font-size="13" font-weight="700">Tab 3: Unsloth &amp; Dataset Studio</text>
+    <text x="1024" y="501" fill="#cbd5e1" font-size="11">• Synthesize ShareGPT training data</text>
+    <text x="1024" y="519" fill="#cbd5e1" font-size="11">• Inspect prompt/completion pairs</text>
+    <text x="1024" y="537" fill="#cbd5e1" font-size="11">• Launch Unsloth QLoRA + view logs</text>
+
+    <!-- Tab 4 -->
+    <rect x="1008" y="593" width="224" height="109" rx="10" fill="#112224" stroke="#10b981" stroke-width="1.2"/>
+    <text x="1024" y="617" fill="#34d399" font-size="13" font-weight="700">Tab 4: Audit &amp; Evaluation Logs</text>
+    <text x="1024" y="637" fill="#cbd5e1" font-size="11">• Saved SQLite project evaluations</text>
+    <text x="1024" y="655" fill="#cbd5e1" font-size="11">• Per-source scraper run history</text>
+    <text x="1024" y="673" fill="#cbd5e1" font-size="11">• LM Studio live health indicator</text>
+  </g>
+
+  <!-- ======================================================================= -->
+  <!-- CONNECTING DATAFLOW ARROWS                                              -->
+  <!-- ======================================================================= -->
+  <!-- Stage 1 -> Stage 2 -->
+  <path d="M 277 255 L 361 245" stroke="#38bdf8" stroke-width="2.2" fill="none" marker-end="url(#arrowBlue)"/>
+  <path d="M 277 400 L 340 400 L 340 255 L 361 255" stroke="#38bdf8" stroke-width="2.2" fill="none" marker-end="url(#arrowBlue)"/>
+  <path d="M 277 545 L 340 545 L 340 265 L 361 265" stroke="#38bdf8" stroke-width="2.2" fill="none" marker-end="url(#arrowBlue)"/>
+
+  <!-- ScraperManager -> SQLite -->
+  <path d="M 482 293 L 482 311" stroke="#a78bfa" stroke-width="2.2" fill="none" marker-end="url(#arrowPurple)"/>
+
+  <!-- SQLite -> Recommender -->
+  <path d="M 482 458 L 482 476" stroke="#a78bfa" stroke-width="2.2" fill="none" marker-end="url(#arrowPurple)"/>
+
+  <!-- SQLite -> Dataset Generator (Stage 2 -> Stage 3) -->
+  <path d="M 602 365 L 645 365 L 645 255 L 686 255" stroke="#fbbf24" stroke-width="2.2" fill="none" marker-end="url(#arrowAmber)"/>
+
+  <!-- Dataset Generator -> Unsloth Trainer -->
+  <path d="M 807 323 L 807 341" stroke="#fbbf24" stroke-width="2.5" fill="none" marker-end="url(#arrowAmber)"/>
+
+  <!-- Unsloth Trainer -> LM Studio (GGUF Export) -->
+  <path d="M 807 508 L 807 526" stroke="#34d399" stroke-width="2.5" fill="none" marker-end="url(#arrowGreen)"/>
+
+  <!-- LM Studio <-> Recommender (Inference & Teacher Loop) -->
+  <path d="M 688 615 L 604 615" stroke="#34d399" stroke-width="2.2" stroke-dasharray="5 3" fill="none" marker-end="url(#arrowGreen)"/>
+  <path d="M 602 585 L 686 585" stroke="#a78bfa" stroke-width="2.2" fill="none" marker-end="url(#arrowPurple)"/>
+
+  <!-- Stage 2/3 <-> Stage 4 (Next.js REST API calls) -->
+  <path d="M 990 255 L 955 255 L 955 550 L 604 550" stroke="#34d399" stroke-width="2" fill="none" marker-end="url(#arrowGreen)"/>
+  <path d="M 927 420 L 1006 510" stroke="#fbbf24" stroke-width="2" fill="none" marker-end="url(#arrowAmber)"/>
+
+  <!-- Footer Legend -->
+  <rect x="30" y="742" width="1220" height="52" rx="10" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+  <circle cx="60" cy="768" r="6" fill="#38bdf8"/>
+  <text x="75" y="772" fill="#cbd5e1" font-size="12">Live HTTP/API Scraping Flow</text>
+
+  <circle cx="295" cy="768" r="6" fill="#a78bfa"/>
+  <text x="310" y="772" fill="#cbd5e1" font-size="12">SQLite Storage &amp; Scoring Queries</text>
+
+  <circle cx="560" cy="768" r="6" fill="#fbbf24"/>
+  <text x="575" y="772" fill="#cbd5e1" font-size="12">ShareGPT JSONL &amp; Unsloth QLoRA Training</text>
+
+  <circle cx="885" cy="768" r="6" fill="#34d399"/>
+  <text x="900" y="772" fill="#cbd5e1" font-size="12">GGUF Deployment, LM Studio Server &amp; Next.js UI</text>
+</svg>
