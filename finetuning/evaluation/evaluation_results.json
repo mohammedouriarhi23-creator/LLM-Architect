@@ -1,0 +1,1109 @@
+{
+  "date": "17/11/2026 21:37",
+  "catalog_model_count": 91,
+  "dataset_count": 60,
+  "gguf_bytes": 1929903008,
+  "training": {
+    "base_model": "unsloth/Qwen2.5-3B-Instruct-bnb-4bit",
+    "max_steps": 20,
+    "current_step": 20,
+    "final_loss": 0.9271,
+    "initial_loss": 1.715,
+    "hardware": "NVIDIA GeForce RTX 4070 Laptop GPU (8GB VRAM)"
+  },
+  "cases": [
+    {
+      "scenario": {
+        "name": "Assistant de migration hors ligne",
+        "description": "Un outil de migration de code doit fonctionner sans réseau sur une station avec 8 Go de VRAM.",
+        "primary_tasks": [
+          "coding",
+          "reasoning"
+        ],
+        "deployment_mode": "local",
+        "max_vram_gb": 8.0,
+        "max_budget_per_1m_tokens": 0.0,
+        "min_context_length": 32768,
+        "require_open_source": true
+      },
+      "prompt": "Project: Assistant de migration hors ligne\nDescription: Un outil de migration de code doit fonctionner sans réseau sur une station avec 8 Go de VRAM.\nPrimary Tasks: coding, reasoning\nDeployment Mode: local (Max VRAM: 8.0 GB)\nMax Budget/1M tokens: $0.0\n\nTop Scraped Candidates:\n1. Qwen 2.5 3B Instruct (Qwen/Qwen2.5-3B-Instruct) - Match: 99.5%, VRAM(Q4): 2.5GB, Context: 32768, Coding: 71.5, Reasoning: 66.8, Monthly Cost: $0.0, Strengths: Runs in full FP16 (~7.6 GB) within your 8.0 GB VRAM, Open-weights (qwen-research) — fine-tunable with Unsloth, Zero token API cost when run locally on LM Studio\n2. Qwen 2.5 Coder 3B Instruct (Qwen/Qwen2.5-Coder-3B-Instruct) - Match: 99.5%, VRAM(Q4): 2.5GB, Context: 32768, Coding: 81.6, Reasoning: 67.4, Monthly Cost: $0.0, Strengths: Runs in full FP16 (~7.6 GB) within your 8.0 GB VRAM, Open-weights (apache-2.0) — fine-tunable with Unsloth, Strong coding benchmark (81.6%), Zero token API cost when run locally on LM Studio\n3. Qwen 2.5 Coder 7B Instruct (Qwen/Qwen2.5-Coder-7B-Instruct) - Match: 99.5%, VRAM(Q4): 7.1GB, Context: 128000, Coding: 88.4, Reasoning: 73.2, Monthly Cost: $0.0, Strengths: Fits in local GPU memory (~7.1 GB VRAM in Q4_K_M GGUF vs 8.0 GB limit), Open-weights (apache-2.0) — fine-tunable with Unsloth, Large 128k token context window, Strong coding benchmark (88.4%)\n\nProvide a concise architectural recommendation explaining which LLM to pick and how to deploy or fine-tune it.",
+      "expected_ids": [
+        "Qwen/Qwen2.5-3B-Instruct",
+        "Qwen/Qwen2.5-Coder-3B-Instruct",
+        "Qwen/Qwen2.5-Coder-7B-Instruct"
+      ],
+      "candidates": [
+        {
+          "id": "Qwen/Qwen2.5-3B-Instruct",
+          "name": "Qwen 2.5 3B Instruct",
+          "match_score": 99.5,
+          "context_length": 32768,
+          "open_weights": true,
+          "q4_vram_gb": 2.5,
+          "input_price_per_1m": 0.0,
+          "output_price_per_1m": 0.0
+        },
+        {
+          "id": "Qwen/Qwen2.5-Coder-3B-Instruct",
+          "name": "Qwen 2.5 Coder 3B Instruct",
+          "match_score": 99.5,
+          "context_length": 32768,
+          "open_weights": true,
+          "q4_vram_gb": 2.5,
+          "input_price_per_1m": 0.0,
+          "output_price_per_1m": 0.0
+        },
+        {
+          "id": "Qwen/Qwen2.5-Coder-7B-Instruct",
+          "name": "Qwen 2.5 Coder 7B Instruct",
+          "match_score": 99.5,
+          "context_length": 128000,
+          "open_weights": true,
+          "q4_vram_gb": 7.1,
+          "input_price_per_1m": 0.0,
+          "output_price_per_1m": 0.0
+        }
+      ]
+    },
+    {
+      "scenario": {
+        "name": "Recherche dans des dossiers réglementaires",
+        "description": "Comparer de longs dossiers réglementaires et retrouver les clauses avec leurs références.",
+        "primary_tasks": [
+          "rag",
+          "extraction",
+          "reasoning"
+        ],
+        "deployment_mode": "cloud",
+        "max_vram_gb": null,
+        "max_budget_per_1m_tokens": 12.0,
+        "min_context_length": 256000,
+        "require_open_source": false
+      },
+      "prompt": "Project: Recherche dans des dossiers réglementaires\nDescription: Comparer de longs dossiers réglementaires et retrouver les clauses avec leurs références.\nPrimary Tasks: rag, extraction, reasoning\nDeployment Mode: cloud (Max VRAM: None GB)\nMax Budget/1M tokens: $12.0\n\nTop Scraped Candidates:\n1. MoonshotAI: Kimi K3.1 Pro (moonshotai/kimi-k3.1-pro) - Match: 93.9%, VRAM(Q4): CloudGB, Context: 1048576, Coding: 88.0, Reasoning: 87.0, Monthly Cost: $70.0, Strengths: Large 1048k token context window, High reasoning capability (87.0%)\n2. Pareto 26.9 (unbiased/pareto-26.9) - Match: 93.9%, VRAM(Q4): CloudGB, Context: 262144, Coding: 88.0, Reasoning: 87.0, Monthly Cost: $62.5, Strengths: Large 262k token context window, High reasoning capability (87.0%)\n3. Google: Gemini 4 Argon (google/gemini-4-argon) - Match: 93.9%, VRAM(Q4): CloudGB, Context: 1048576, Coding: 88.0, Reasoning: 87.0, Monthly Cost: $70.0, Strengths: Large 1048k token context window, High reasoning capability (87.0%)\n\nProvide a concise architectural recommendation explaining which LLM to pick and how to deploy or fine-tune it.",
+      "expected_ids": [
+        "moonshotai/kimi-k3.1-pro",
+        "unbiased/pareto-26.9",
+        "google/gemini-4-argon"
+      ],
+      "candidates": [
+        {
+          "id": "moonshotai/kimi-k3.1-pro",
+          "name": "MoonshotAI: Kimi K3.1 Pro",
+          "match_score": 93.9,
+          "context_length": 1048576,
+          "open_weights": false,
+          "q4_vram_gb": null,
+          "input_price_per_1m": 2.0,
+          "output_price_per_1m": 10.0
+        },
+        {
+          "id": "unbiased/pareto-26.9",
+          "name": "Pareto 26.9",
+          "match_score": 93.9,
+          "context_length": 262144,
+          "open_weights": false,
+          "q4_vram_gb": null,
+          "input_price_per_1m": 2.5,
+          "output_price_per_1m": 7.5
+        },
+        {
+          "id": "google/gemini-4-argon",
+          "name": "Google: Gemini 4 Argon",
+          "match_score": 93.9,
+          "context_length": 1048576,
+          "open_weights": false,
+          "q4_vram_gb": null,
+          "input_price_per_1m": 2.0,
+          "output_price_per_1m": 10.0
+        }
+      ]
+    },
+    {
+      "scenario": {
+        "name": "Extraction de reçus à faible coût",
+        "description": "Extraire des champs JSON de reçus anonymisés avec un budget API strict.",
+        "primary_tasks": [
+          "extraction",
+          "reasoning"
+        ],
+        "deployment_mode": "cloud",
+        "max_vram_gb": null,
+        "max_budget_per_1m_tokens": 0.15,
+        "min_context_length": 8192,
+        "require_open_source": true
+      },
+      "prompt": "Project: Extraction de reçus à faible coût\nDescription: Extraire des champs JSON de reçus anonymisés avec un budget API strict.\nPrimary Tasks: extraction, reasoning\nDeployment Mode: cloud (Max VRAM: None GB)\nMax Budget/1M tokens: $0.15\n\nTop Scraped Candidates:\n1. DeepSeek R1 Distill Qwen 7B (deepseek-ai/DeepSeek-R1-Distill-Qwen-7B) - Match: 92.5%, VRAM(Q4): 7.1GB, Context: 128000, Coding: 79.2, Reasoning: 89.5, Monthly Cost: $0.0, Strengths: Can be self-hosted or accessed via serverless open-weight providers, Open-weights (mit) — fine-tunable with Unsloth, Large 128k token context window, High reasoning capability (89.5%)\n2. Qwen 2.5 14B Instruct (Qwen/Qwen2.5-14B-Instruct) - Match: 88.1%, VRAM(Q4): 11.5GB, Context: 128000, Coding: 83.1, Reasoning: 81.0, Monthly Cost: $0.0, Strengths: Can be self-hosted or accessed via serverless open-weight providers, Open-weights (apache-2.0) — fine-tunable with Unsloth, Large 128k token context window, High reasoning capability (81.0%)\n3. DeepSeek R1 Distill Qwen 1.5B (deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B) - Match: 84.6%, VRAM(Q4): 2.1GB, Context: 64000, Coding: 62.0, Reasoning: 78.4, Monthly Cost: $0.0, Strengths: Can be self-hosted or accessed via serverless open-weight providers, Open-weights (mit) — fine-tunable with Unsloth, Zero token API cost when run locally on LM Studio\n\nProvide a concise architectural recommendation explaining which LLM to pick and how to deploy or fine-tune it.",
+      "expected_ids": [
+        "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
+      ],
+      "candidates": [
+        {
+          "id": "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B",
+          "name": "DeepSeek R1 Distill Qwen 7B",
+          "match_score": 92.5,
+          "context_length": 128000,
+          "open_weights": true,
+          "q4_vram_gb": 7.1,
+          "input_price_per_1m": 0.0,
+          "output_price_per_1m": 0.0
+        },
+        {
+          "id": "Qwen/Qwen2.5-14B-Instruct",
+          "name": "Qwen 2.5 14B Instruct",
+          "match_score": 88.1,
+          "context_length": 128000,
+          "open_weights": true,
+          "q4_vram_gb": 11.5,
+          "input_price_per_1m": 0.0,
+          "output_price_per_1m": 0.0
+        },
+        {
+          "id": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+          "name": "DeepSeek R1 Distill Qwen 1.5B",
+          "match_score": 84.6,
+          "context_length": 64000,
+          "open_weights": true,
+          "q4_vram_gb": 2.1,
+          "input_price_per_1m": 0.0,
+          "output_price_per_1m": 0.0
+        }
+      ]
+    },
+    {
+      "scenario": {
+        "name": "Tuteur de démonstration mathématique local",
+        "description": "Un tuteur interactif explique et vérifie des démonstrations mathématiques sur une machine locale.",
+        "primary_tasks": [
+          "math",
+          "reasoning"
+        ],
+        "deployment_mode": "local",
+        "max_vram_gb": 10.0,
+        "max_budget_per_1m_tokens": 0.0,
+        "min_context_length": 32768,
+        "require_open_source": true
+      },
+      "prompt": "Project: Tuteur de démonstration mathématique local\nDescription: Un tuteur interactif explique et vérifie des démonstrations mathématiques sur une machine locale.\nPrimary Tasks: math, reasoning\nDeployment Mode: local (Max VRAM: 10.0 GB)\nMax Budget/1M tokens: $0.0\n\nTop Scraped Candidates:\n1. Qwen 2.5 3B Instruct (Qwen/Qwen2.5-3B-Instruct) - Match: 99.5%, VRAM(Q4): 2.5GB, Context: 32768, Coding: 71.5, Reasoning: 66.8, Monthly Cost: $0.0, Strengths: Runs in full FP16 (~7.6 GB) within your 10.0 GB VRAM, Open-weights (qwen-research) — fine-tunable with Unsloth, Zero token API cost when run locally on LM Studio\n2. Qwen 2.5 Coder 3B Instruct (Qwen/Qwen2.5-Coder-3B-Instruct) - Match: 99.5%, VRAM(Q4): 2.5GB, Context: 32768, Coding: 81.6, Reasoning: 67.4, Monthly Cost: $0.0, Strengths: Runs in full FP16 (~7.6 GB) within your 10.0 GB VRAM, Open-weights (apache-2.0) — fine-tunable with Unsloth, Zero token API cost when run locally on LM Studio\n3. Qwen 2.5 Coder 7B Instruct (Qwen/Qwen2.5-Coder-7B-Instruct) - Match: 99.5%, VRAM(Q4): 7.1GB, Context: 128000, Coding: 88.4, Reasoning: 73.2, Monthly Cost: $0.0, Strengths: Fits in local GPU memory (~7.1 GB VRAM in Q4_K_M GGUF vs 10.0 GB limit), Open-weights (apache-2.0) — fine-tunable with Unsloth, Large 128k token context window, Zero token API cost when run locally on LM Studio\n\nProvide a concise architectural recommendation explaining which LLM to pick and how to deploy or fine-tune it.",
+      "expected_ids": [
+        "Qwen/Qwen2.5-3B-Instruct",
+        "Qwen/Qwen2.5-Coder-3B-Instruct",
+        "Qwen/Qwen2.5-Coder-7B-Instruct"
+      ],
+      "candidates": [
+        {
+          "id": "Qwen/Qwen2.5-3B-Instruct",
+          "name": "Qwen 2.5 3B Instruct",
+          "match_score": 99.5,
+          "context_length": 32768,
+          "open_weights": true,
+          "q4_vram_gb": 2.5,
+          "input_price_per_1m": 0.0,
+          "output_price_per_1m": 0.0
+        },
+        {
+          "id": "Qwen/Qwen2.5-Coder-3B-Instruct",
+          "name": "Qwen 2.5 Coder 3B Instruct",
+          "match_score": 99.5,
+          "context_length": 32768,
+          "open_weights": true,
+          "q4_vram_gb": 2.5,
+          "input_price_per_1m": 0.0,
+          "output_price_per_1m": 0.0
+        },
+        {
+          "id": "Qwen/Qwen2.5-Coder-7B-Instruct",
+          "name": "Qwen 2.5 Coder 7B Instruct",
+          "match_score": 99.5,
+          "context_length": 128000,
+          "open_weights": true,
+          "q4_vram_gb": 7.1,
+          "input_price_per_1m": 0.0,
+          "output_price_per_1m": 0.0
+        }
+      ]
+    },
+    {
+      "scenario": {
+        "name": "Synthèse rapide des demandes entrantes",
+        "description": "Résumer des messages entrants et proposer une réponse en temps réel via une API.",
+        "primary_tasks": [
+          "chat",
+          "extraction"
+        ],
+        "deployment_mode": "cloud",
+        "max_vram_gb": null,
+        "max_budget_per_1m_tokens": 2.0,
+        "min_context_length": 16384,
+        "min_tokens_per_sec": 95.0,
+        "require_open_source": false
+      },
+      "prompt": "Project: Synthèse rapide des demandes entrantes\nDescription: Résumer des messages entrants et proposer une réponse en temps réel via une API.\nPrimary Tasks: chat, extraction\nDeployment Mode: cloud (Max VRAM: None GB)\nMax Budget/1M tokens: $2.0\n\nTop Scraped Candidates:\n1. GPT-4o Mini (openai/gpt-4o-mini) - Match: 88.9%, VRAM(Q4): CloudGB, Context: 128000, Coding: 85.2, Reasoning: 81.4, Monthly Cost: $4.5, Strengths: Large 128k token context window, Cost-efficient API (~$0.38/1M tokens, ~$4.5/mo), Fast throughput (~135 tokens/sec)\n2. DeepSeek V3 (deepseek-ai/DeepSeek-V3) - Match: 85.4%, VRAM(Q4): 380.0GB, Context: 128000, Coding: 90.8, Reasoning: 89.1, Monthly Cost: $8.2, Strengths: Open-weights (mit) — fine-tunable with Unsloth, Large 128k token context window, Cost-efficient API (~$0.69/1M tokens, ~$8.2/mo)\n3. Llama 3.3 70B Instruct (meta-llama/Llama-3.3-70B-Instruct) - Match: 84.1%, VRAM(Q4): 42.0GB, Context: 128000, Coding: 88.4, Reasoning: 86.5, Monthly Cost: $9.85, Strengths: Open-weights (llama3.3) — fine-tunable with Unsloth, Large 128k token context window, Cost-efficient API (~$0.69/1M tokens, ~$9.85/mo)\n\nProvide a concise architectural recommendation explaining which LLM to pick and how to deploy or fine-tune it.",
+      "expected_ids": [
+        "openai/gpt-4o-mini"
+      ],
+      "candidates": [
+        {
+          "id": "openai/gpt-4o-mini",
+          "name": "GPT-4o Mini",
+          "match_score": 88.9,
+          "context_length": 128000,
+          "open_weights": false,
+          "q4_vram_gb": null,
+          "input_price_per_1m": 0.15,
+          "output_price_per_1m": 0.6
+        },
+        {
+          "id": "deepseek-ai/DeepSeek-V3",
+          "name": "DeepSeek V3",
+          "match_score": 85.4,
+          "context_length": 128000,
+          "open_weights": true,
+          "q4_vram_gb": 380.0,
+          "input_price_per_1m": 0.27,
+          "output_price_per_1m": 1.1
+        },
+        {
+          "id": "meta-llama/Llama-3.3-70B-Instruct",
+          "name": "Llama 3.3 70B Instruct",
+          "match_score": 84.1,
+          "context_length": 128000,
+          "open_weights": true,
+          "q4_vram_gb": 42.0,
+          "input_price_per_1m": 0.59,
+          "output_price_per_1m": 0.79
+        }
+      ]
+    },
+    {
+      "scenario": {
+        "name": "Classification sur appareil industriel",
+        "description": "Classer et structurer des observations courtes sur un appareil isolé, sans service distant.",
+        "primary_tasks": [
+          "extraction",
+          "chat"
+        ],
+        "deployment_mode": "local",
+        "max_vram_gb": 3.5,
+        "max_budget_per_1m_tokens": 0.0,
+        "min_context_length": 8192,
+        "require_open_source": true
+      },
+      "prompt": "Project: Classification sur appareil industriel\nDescription: Classer et structurer des observations courtes sur un appareil isolé, sans service distant.\nPrimary Tasks: extraction, chat\nDeployment Mode: local (Max VRAM: 3.5 GB)\nMax Budget/1M tokens: $0.0\n\nTop Scraped Candidates:\n1. Qwen2.5-0.5B-Instruct (Qwen/Qwen2.5-0.5B-Instruct) - Match: 94.8%, VRAM(Q4): 0.9GB, Context: 32768, Coding: 65.0, Reasoning: 67.0, Monthly Cost: $0.0, Strengths: Runs in full FP16 (~2.0 GB) within your 3.5 GB VRAM, Open-weights (open) — fine-tunable with Unsloth, Zero token API cost when run locally on LM Studio\n2. Qwen2.5-1.5B-Instruct (Qwen/Qwen2.5-1.5B-Instruct) - Match: 93.8%, VRAM(Q4): 1.5GB, Context: 32768, Coding: 65.0, Reasoning: 67.0, Monthly Cost: $0.0, Strengths: Fits near-lossless Q8_0 GGUF (~2.4 GB) in 3.5 GB VRAM, Open-weights (open) — fine-tunable with Unsloth, Zero token API cost when run locally on LM Studio\n3. DeepSeek R1 Distill Qwen 1.5B (deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B) - Match: 91.8%, VRAM(Q4): 2.1GB, Context: 64000, Coding: 62.0, Reasoning: 78.4, Monthly Cost: $0.0, Strengths: Fits near-lossless Q8_0 GGUF (~3.1 GB) in 3.5 GB VRAM, Open-weights (mit) — fine-tunable with Unsloth, Zero token API cost when run locally on LM Studio\n\nProvide a concise architectural recommendation explaining which LLM to pick and how to deploy or fine-tune it.",
+      "expected_ids": [
+        "Qwen/Qwen2.5-0.5B-Instruct"
+      ],
+      "candidates": [
+        {
+          "id": "Qwen/Qwen2.5-0.5B-Instruct",
+          "name": "Qwen2.5-0.5B-Instruct",
+          "match_score": 94.8,
+          "context_length": 32768,
+          "open_weights": true,
+          "q4_vram_gb": 0.9,
+          "input_price_per_1m": 0.0,
+          "output_price_per_1m": 0.0
+        },
+        {
+          "id": "Qwen/Qwen2.5-1.5B-Instruct",
+          "name": "Qwen2.5-1.5B-Instruct",
+          "match_score": 93.8,
+          "context_length": 32768,
+          "open_weights": true,
+          "q4_vram_gb": 1.5,
+          "input_price_per_1m": 0.0,
+          "output_price_per_1m": 0.0
+        },
+        {
+          "id": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+          "name": "DeepSeek R1 Distill Qwen 1.5B",
+          "match_score": 91.8,
+          "context_length": 64000,
+          "open_weights": true,
+          "q4_vram_gb": 2.1,
+          "input_price_per_1m": 0.0,
+          "output_price_per_1m": 0.0
+        }
+      ]
+    },
+    {
+      "scenario": {
+        "name": "Assistant documentaire souverain",
+        "description": "Indexer la documentation interne dans un environnement privé et justifier chaque réponse.",
+        "primary_tasks": [
+          "rag",
+          "reasoning"
+        ],
+        "deployment_mode": "local",
+        "max_vram_gb": 20.0,
+        "max_budget_per_1m_tokens": 0.0,
+        "min_context_length": 65536,
+        "require_open_source": true
+      },
+      "prompt": "Project: Assistant documentaire souverain\nDescription: Indexer la documentation interne dans un environnement privé et justifier chaque réponse.\nPrimary Tasks: rag, reasoning\nDeployment Mode: local (Max VRAM: 20.0 GB)\nMax Budget/1M tokens: $0.0\n\nTop Scraped Candidates:\n1. Qwen 2.5 Coder 7B Instruct (Qwen/Qwen2.5-Coder-7B-Instruct) - Match: 99.5%, VRAM(Q4): 7.1GB, Context: 128000, Coding: 88.4, Reasoning: 73.2, Monthly Cost: $0.0, Strengths: Runs in full FP16 (~19.9 GB) within your 20.0 GB VRAM, Open-weights (apache-2.0) — fine-tunable with Unsloth, Large 128k token context window, Zero token API cost when run locally on LM Studio\n2. Llama 3.1 8B Instruct (meta-llama/Llama-3.1-8B-Instruct) - Match: 99.5%, VRAM(Q4): 7.3GB, Context: 128000, Coding: 72.6, Reasoning: 74.5, Monthly Cost: $0.0, Strengths: Fits near-lossless Q8_0 GGUF (~11.8 GB) in 20.0 GB VRAM, Open-weights (llama3.1) — fine-tunable with Unsloth, Large 128k token context window, Zero token API cost when run locally on LM Studio\n3. DeepSeek R1 Distill Qwen 7B (deepseek-ai/DeepSeek-R1-Distill-Qwen-7B) - Match: 99.5%, VRAM(Q4): 7.1GB, Context: 128000, Coding: 79.2, Reasoning: 89.5, Monthly Cost: $0.0, Strengths: Runs in full FP16 (~19.9 GB) within your 20.0 GB VRAM, Open-weights (mit) — fine-tunable with Unsloth, Large 128k token context window, High reasoning capability (89.5%)\n\nProvide a concise architectural recommendation explaining which LLM to pick and how to deploy or fine-tune it.",
+      "expected_ids": [
+        "Qwen/Qwen2.5-Coder-7B-Instruct",
+        "meta-llama/Llama-3.1-8B-Instruct",
+        "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
+      ],
+      "candidates": [
+        {
+          "id": "Qwen/Qwen2.5-Coder-7B-Instruct",
+          "name": "Qwen 2.5 Coder 7B Instruct",
+          "match_score": 99.5,
+          "context_length": 128000,
+          "open_weights": true,
+          "q4_vram_gb": 7.1,
+          "input_price_per_1m": 0.0,
+          "output_price_per_1m": 0.0
+        },
+        {
+          "id": "meta-llama/Llama-3.1-8B-Instruct",
+          "name": "Llama 3.1 8B Instruct",
+          "match_score": 99.5,
+          "context_length": 128000,
+          "open_weights": true,
+          "q4_vram_gb": 7.3,
+          "input_price_per_1m": 0.0,
+          "output_price_per_1m": 0.0
+        },
+        {
+          "id": "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B",
+          "name": "DeepSeek R1 Distill Qwen 7B",
+          "match_score": 99.5,
+          "context_length": 128000,
+          "open_weights": true,
+          "q4_vram_gb": 7.1,
+          "input_price_per_1m": 0.0,
+          "output_price_per_1m": 0.0
+        }
+      ]
+    },
+    {
+      "scenario": {
+        "name": "Revue automatisée de dépôts logiciels",
+        "description": "Analyser des changements répartis entre plusieurs dépôts et expliquer les risques de régression.",
+        "primary_tasks": [
+          "coding",
+          "agentic"
+        ],
+        "deployment_mode": "cloud",
+        "max_vram_gb": null,
+        "max_budget_per_1m_tokens": 20.0,
+        "min_context_length": 96000,
+        "require_open_source": false
+      },
+      "prompt": "Project: Revue automatisée de dépôts logiciels\nDescription: Analyser des changements répartis entre plusieurs dépôts et expliquer les risques de régression.\nPrimary Tasks: coding, agentic\nDeployment Mode: cloud (Max VRAM: None GB)\nMax Budget/1M tokens: $20.0\n\nTop Scraped Candidates:\n1. MoonshotAI: Kimi K3.1 Pro (moonshotai/kimi-k3.1-pro) - Match: 99.5%, VRAM(Q4): CloudGB, Context: 1048576, Coding: 88.0, Reasoning: 87.0, Monthly Cost: $70.0, Strengths: Large 1048k token context window, Strong coding benchmark (88.0%), High reasoning capability (87.0%)\n2. Reflection: Beam 1.0 501B A23B (reflection/beam-1.0-501b-a23b) - Match: 99.5%, VRAM(Q4): CloudGB, Context: 1048576, Coding: 86.5, Reasoning: 86.0, Monthly Cost: $8.0, Strengths: Large 1048k token context window, Strong coding benchmark (86.5%), High reasoning capability (86.0%), Cost-efficient API (~$0.65/1M tokens, ~$8.0/mo)\n3. Pareto 26.9 (unbiased/pareto-26.9) - Match: 99.5%, VRAM(Q4): CloudGB, Context: 262144, Coding: 88.0, Reasoning: 87.0, Monthly Cost: $62.5, Strengths: Large 262k token context window, Strong coding benchmark (88.0%), High reasoning capability (87.0%)\n\nProvide a concise architectural recommendation explaining which LLM to pick and how to deploy or fine-tune it.",
+      "expected_ids": [
+        "moonshotai/kimi-k3.1-pro",
+        "reflection/beam-1.0-501b-a23b",
+        "unbiased/pareto-26.9"
+      ],
+      "candidates": [
+        {
+          "id": "moonshotai/kimi-k3.1-pro",
+          "name": "MoonshotAI: Kimi K3.1 Pro",
+          "match_score": 99.5,
+          "context_length": 1048576,
+          "open_weights": false,
+          "q4_vram_gb": null,
+          "input_price_per_1m": 2.0,
+          "output_price_per_1m": 10.0
+        },
+        {
+          "id": "reflection/beam-1.0-501b-a23b",
+          "name": "Reflection: Beam 1.0 501B A23B",
+          "match_score": 99.5,
+          "context_length": 1048576,
+          "open_weights": false,
+          "q4_vram_gb": null,
+          "input_price_per_1m": 0.3,
+          "output_price_per_1m": 1.0
+        },
+        {
+          "id": "unbiased/pareto-26.9",
+          "name": "Pareto 26.9",
+          "match_score": 99.5,
+          "context_length": 262144,
+          "open_weights": false,
+          "q4_vram_gb": null,
+          "input_price_per_1m": 2.5,
+          "output_price_per_1m": 7.5
+        }
+      ]
+    },
+    {
+      "scenario": {
+        "name": "Croisement de subventions longues",
+        "description": "Croiser plusieurs dossiers de subvention et en extraire les critères d'éligibilité.",
+        "primary_tasks": [
+          "extraction",
+          "rag"
+        ],
+        "deployment_mode": "cloud",
+        "max_vram_gb": null,
+        "max_budget_per_1m_tokens": 6.0,
+        "min_context_length": 256000,
+        "require_open_source": false
+      },
+      "prompt": "Project: Croisement de subventions longues\nDescription: Croiser plusieurs dossiers de subvention et en extraire les critères d'éligibilité.\nPrimary Tasks: extraction, rag\nDeployment Mode: cloud (Max VRAM: None GB)\nMax Budget/1M tokens: $6.0\n\nTop Scraped Candidates:\n1. DeepSeek: DeepSeek V4.1 Flash 1017 (deepseek/deepseek-v4.1-flash-1017) - Match: 85.2%, VRAM(Q4): CloudGB, Context: 1048576, Coding: 77.0, Reasoning: 76.5, Monthly Cost: $2.56, Strengths: Open-weights (open-weights) — fine-tunable with Unsloth, Large 1048k token context window, Cost-efficient API (~$0.25/1M tokens, ~$2.56/mo)\n2. NVIDIA: Nemotron 3.5 Super VL (nvidia/nemotron-3.5-super-vl) - Match: 85.2%, VRAM(Q4): CloudGB, Context: 1048576, Coding: 77.0, Reasoning: 76.5, Monthly Cost: $3.85, Strengths: Open-weights (open-weights) — fine-tunable with Unsloth, Large 1048k token context window, Cost-efficient API (~$0.31/1M tokens, ~$3.85/mo)\n3. Mistral: Mistral Large 4 (mistralai/mistral-large-4-0) - Match: 85.2%, VRAM(Q4): CloudGB, Context: 1048576, Coding: 77.0, Reasoning: 76.5, Monthly Cost: $17.5, Strengths: Open-weights (open-weights) — fine-tunable with Unsloth, Large 1048k token context window\n\nProvide a concise architectural recommendation explaining which LLM to pick and how to deploy or fine-tune it.",
+      "expected_ids": [
+        "deepseek/deepseek-v4.1-flash-1017",
+        "nvidia/nemotron-3.5-super-vl",
+        "mistralai/mistral-large-4-0"
+      ],
+      "candidates": [
+        {
+          "id": "deepseek/deepseek-v4.1-flash-1017",
+          "name": "DeepSeek: DeepSeek V4.1 Flash 1017",
+          "match_score": 85.2,
+          "context_length": 1048576,
+          "open_weights": true,
+          "q4_vram_gb": null,
+          "input_price_per_1m": 0.006,
+          "output_price_per_1m": 0.5
+        },
+        {
+          "id": "nvidia/nemotron-3.5-super-vl",
+          "name": "NVIDIA: Nemotron 3.5 Super VL",
+          "match_score": 85.2,
+          "context_length": 1048576,
+          "open_weights": true,
+          "q4_vram_gb": null,
+          "input_price_per_1m": 0.15,
+          "output_price_per_1m": 0.47
+        },
+        {
+          "id": "mistralai/mistral-large-4-0",
+          "name": "Mistral: Mistral Large 4",
+          "match_score": 85.2,
+          "context_length": 1048576,
+          "open_weights": true,
+          "q4_vram_gb": null,
+          "input_price_per_1m": 0.7,
+          "output_price_per_1m": 2.1
+        }
+      ]
+    },
+    {
+      "scenario": {
+        "name": "Résumé local des échanges de support",
+        "description": "Résumer des échanges de support sensibles sur un poste interne et produire des réponses cohérentes.",
+        "primary_tasks": [
+          "chat",
+          "reasoning"
+        ],
+        "deployment_mode": "local",
+        "max_vram_gb": 12.0,
+        "max_budget_per_1m_tokens": 0.0,
+        "min_context_length": 48000,
+        "require_open_source": true
+      },
+      "prompt": "Project: Résumé local des échanges de support\nDescription: Résumer des échanges de support sensibles sur un poste interne et produire des réponses cohérentes.\nPrimary Tasks: chat, reasoning\nDeployment Mode: local (Max VRAM: 12.0 GB)\nMax Budget/1M tokens: $0.0\n\nTop Scraped Candidates:\n1. Llama 3.1 8B Instruct (meta-llama/Llama-3.1-8B-Instruct) - Match: 99.5%, VRAM(Q4): 7.3GB, Context: 128000, Coding: 72.6, Reasoning: 74.5, Monthly Cost: $0.0, Strengths: Fits near-lossless Q8_0 GGUF (~11.8 GB) in 12.0 GB VRAM, Open-weights (llama3.1) — fine-tunable with Unsloth, Large 128k token context window, Zero token API cost when run locally on LM Studio\n2. DeepSeek R1 Distill Qwen 7B (deepseek-ai/DeepSeek-R1-Distill-Qwen-7B) - Match: 99.5%, VRAM(Q4): 7.1GB, Context: 128000, Coding: 79.2, Reasoning: 89.5, Monthly Cost: $0.0, Strengths: Fits near-lossless Q8_0 GGUF (~11.3 GB) in 12.0 GB VRAM, Open-weights (mit) — fine-tunable with Unsloth, Large 128k token context window, High reasoning capability (89.5%)\n3. DeepSeek R1 Distill Qwen 1.5B (deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B) - Match: 99.5%, VRAM(Q4): 2.1GB, Context: 64000, Coding: 62.0, Reasoning: 78.4, Monthly Cost: $0.0, Strengths: Runs in full FP16 (~5.0 GB) within your 12.0 GB VRAM, Open-weights (mit) — fine-tunable with Unsloth, Zero token API cost when run locally on LM Studio\n\nProvide a concise architectural recommendation explaining which LLM to pick and how to deploy or fine-tune it.",
+      "expected_ids": [
+        "meta-llama/Llama-3.1-8B-Instruct",
+        "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B",
+        "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"
+      ],
+      "candidates": [
+        {
+          "id": "meta-llama/Llama-3.1-8B-Instruct",
+          "name": "Llama 3.1 8B Instruct",
+          "match_score": 99.5,
+          "context_length": 128000,
+          "open_weights": true,
+          "q4_vram_gb": 7.3,
+          "input_price_per_1m": 0.0,
+          "output_price_per_1m": 0.0
+        },
+        {
+          "id": "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B",
+          "name": "DeepSeek R1 Distill Qwen 7B",
+          "match_score": 99.5,
+          "context_length": 128000,
+          "open_weights": true,
+          "q4_vram_gb": 7.1,
+          "input_price_per_1m": 0.0,
+          "output_price_per_1m": 0.0
+        },
+        {
+          "id": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+          "name": "DeepSeek R1 Distill Qwen 1.5B",
+          "match_score": 99.5,
+          "context_length": 64000,
+          "open_weights": true,
+          "q4_vram_gb": 2.1,
+          "input_price_per_1m": 0.0,
+          "output_price_per_1m": 0.0
+        }
+      ]
+    },
+    {
+      "scenario": {
+        "name": "Assistant SQL pour un poste de travail",
+        "description": "Aider les analystes à écrire, corriger et expliquer des requêtes SQL sur un poste avec 6 Go de VRAM.",
+        "primary_tasks": [
+          "coding",
+          "reasoning"
+        ],
+        "deployment_mode": "local",
+        "max_vram_gb": 6.0,
+        "max_budget_per_1m_tokens": 0.0,
+        "min_context_length": 16384,
+        "require_open_source": true
+      },
+      "prompt": "Project: Assistant SQL pour un poste de travail\nDescription: Aider les analystes à écrire, corriger et expliquer des requêtes SQL sur un poste avec 6 Go de VRAM.\nPrimary Tasks: coding, reasoning\nDeployment Mode: local (Max VRAM: 6.0 GB)\nMax Budget/1M tokens: $0.0\n\nTop Scraped Candidates:\n1. Qwen 2.5 3B Instruct (Qwen/Qwen2.5-3B-Instruct) - Match: 99.5%, VRAM(Q4): 2.5GB, Context: 32768, Coding: 71.5, Reasoning: 66.8, Monthly Cost: $0.0, Strengths: Fits near-lossless Q8_0 GGUF (~4.2 GB) in 6.0 GB VRAM, Open-weights (qwen-research) — fine-tunable with Unsloth, Zero token API cost when run locally on LM Studio\n2. Qwen 2.5 Coder 3B Instruct (Qwen/Qwen2.5-Coder-3B-Instruct) - Match: 99.5%, VRAM(Q4): 2.5GB, Context: 32768, Coding: 81.6, Reasoning: 67.4, Monthly Cost: $0.0, Strengths: Fits near-lossless Q8_0 GGUF (~4.2 GB) in 6.0 GB VRAM, Open-weights (apache-2.0) — fine-tunable with Unsloth, Strong coding benchmark (81.6%), Zero token API cost when run locally on LM Studio\n3. DeepSeek R1 Distill Qwen 1.5B (deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B) - Match: 99.5%, VRAM(Q4): 2.1GB, Context: 64000, Coding: 62.0, Reasoning: 78.4, Monthly Cost: $0.0, Strengths: Runs in full FP16 (~5.0 GB) within your 6.0 GB VRAM, Open-weights (mit) — fine-tunable with Unsloth, Zero token API cost when run locally on LM Studio\n\nProvide a concise architectural recommendation explaining which LLM to pick and how to deploy or fine-tune it.",
+      "expected_ids": [
+        "Qwen/Qwen2.5-3B-Instruct",
+        "Qwen/Qwen2.5-Coder-3B-Instruct",
+        "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"
+      ],
+      "candidates": [
+        {
+          "id": "Qwen/Qwen2.5-3B-Instruct",
+          "name": "Qwen 2.5 3B Instruct",
+          "match_score": 99.5,
+          "context_length": 32768,
+          "open_weights": true,
+          "q4_vram_gb": 2.5,
+          "input_price_per_1m": 0.0,
+          "output_price_per_1m": 0.0
+        },
+        {
+          "id": "Qwen/Qwen2.5-Coder-3B-Instruct",
+          "name": "Qwen 2.5 Coder 3B Instruct",
+          "match_score": 99.5,
+          "context_length": 32768,
+          "open_weights": true,
+          "q4_vram_gb": 2.5,
+          "input_price_per_1m": 0.0,
+          "output_price_per_1m": 0.0
+        },
+        {
+          "id": "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B",
+          "name": "DeepSeek R1 Distill Qwen 1.5B",
+          "match_score": 99.5,
+          "context_length": 64000,
+          "open_weights": true,
+          "q4_vram_gb": 2.1,
+          "input_price_per_1m": 0.0,
+          "output_price_per_1m": 0.0
+        }
+      ]
+    },
+    {
+      "scenario": {
+        "name": "Révision multilingue de contenus",
+        "description": "Réviser et reformuler des contenus multilingues avec un débit régulier et un plafond de coût serré.",
+        "primary_tasks": [
+          "chat",
+          "reasoning"
+        ],
+        "deployment_mode": "cloud",
+        "max_vram_gb": null,
+        "max_budget_per_1m_tokens": 0.8,
+        "min_context_length": 32768,
+        "min_tokens_per_sec": 45.0,
+        "require_open_source": false
+      },
+      "prompt": "Project: Révision multilingue de contenus\nDescription: Réviser et reformuler des contenus multilingues avec un débit régulier et un plafond de coût serré.\nPrimary Tasks: chat, reasoning\nDeployment Mode: cloud (Max VRAM: None GB)\nMax Budget/1M tokens: $0.8\n\nTop Scraped Candidates:\n1. DeepSeek V3 (deepseek-ai/DeepSeek-V3) - Match: 99.5%, VRAM(Q4): 380.0GB, Context: 128000, Coding: 90.8, Reasoning: 89.1, Monthly Cost: $8.2, Strengths: Open-weights (mit) — fine-tunable with Unsloth, Large 128k token context window, High reasoning capability (89.1%), Cost-efficient API (~$0.69/1M tokens, ~$8.2/mo)\n2. Llama 3.3 70B Instruct (meta-llama/Llama-3.3-70B-Instruct) - Match: 99.5%, VRAM(Q4): 42.0GB, Context: 128000, Coding: 88.4, Reasoning: 86.5, Monthly Cost: $9.85, Strengths: Open-weights (llama3.3) — fine-tunable with Unsloth, Large 128k token context window, High reasoning capability (86.5%), Cost-efficient API (~$0.69/1M tokens, ~$9.85/mo)\n3. DeepSeek R1 Distill Qwen 7B (deepseek-ai/DeepSeek-R1-Distill-Qwen-7B) - Match: 97.5%, VRAM(Q4): 7.1GB, Context: 128000, Coding: 79.2, Reasoning: 89.5, Monthly Cost: $0.0, Strengths: Can be self-hosted or accessed via serverless open-weight providers, Open-weights (mit) — fine-tunable with Unsloth, Large 128k token context window, High reasoning capability (89.5%)\n\nProvide a concise architectural recommendation explaining which LLM to pick and how to deploy or fine-tune it.",
+      "expected_ids": [
+        "deepseek-ai/DeepSeek-V3",
+        "meta-llama/Llama-3.3-70B-Instruct"
+      ],
+      "candidates": [
+        {
+          "id": "deepseek-ai/DeepSeek-V3",
+          "name": "DeepSeek V3",
+          "match_score": 99.5,
+          "context_length": 128000,
+          "open_weights": true,
+          "q4_vram_gb": 380.0,
+          "input_price_per_1m": 0.27,
+          "output_price_per_1m": 1.1
+        },
+        {
+          "id": "meta-llama/Llama-3.3-70B-Instruct",
+          "name": "Llama 3.3 70B Instruct",
+          "match_score": 99.5,
+          "context_length": 128000,
+          "open_weights": true,
+          "q4_vram_gb": 42.0,
+          "input_price_per_1m": 0.59,
+          "output_price_per_1m": 0.79
+        },
+        {
+          "id": "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B",
+          "name": "DeepSeek R1 Distill Qwen 7B",
+          "match_score": 97.5,
+          "context_length": 128000,
+          "open_weights": true,
+          "q4_vram_gb": 7.1,
+          "input_price_per_1m": 0.0,
+          "output_price_per_1m": 0.0
+        }
+      ]
+    }
+  ],
+  "results": {
+    "qwen2.5-3b-advisor": [
+      {
+        "scenario_name": "Assistant de migration hors ligne",
+        "expected_ids": [
+          "Qwen/Qwen2.5-3B-Instruct",
+          "Qwen/Qwen2.5-Coder-3B-Instruct",
+          "Qwen/Qwen2.5-Coder-7B-Instruct"
+        ],
+        "selected_model_id": "Qwen/Qwen2.5-Coder-3B-Instruct",
+        "selected_model_name": "Qwen 2.5 Coder 3B Instruct",
+        "decision_match": true,
+        "candidate_grounded": true,
+        "constraint_compliant": true,
+        "constraint_failures": [],
+        "elapsed_seconds": 20.204645699996036,
+        "completion_tokens": 471,
+        "generation_tokens_per_second": 23.311470391192874,
+        "output": "### Architectural Recommendation\n\n#### Why Qwen 2.5 Coder 3B Instruct is the Best Choice:\nQwen 2.5 Coder 3B Instruct stands out as the best choice for your project due to its high coding and reasoning capabilities, robust performance within your VRAM constraints (8GB), and zero token API cost when deployed locally on LM Studio or Cloud API. It matches your requirements closely with a context window of 32768 tokens, which is sufficient for complex tasks like code migration.\n\n#### Deployment Advice:\nGiven the local deployment mode requirement, it's best to deploy Qwen 2.5 Coder 3B Instruct using the Q4_K_M GGUF format on LM Studio. This format allows you to fine-tune the model with Unsloth and ensures that the model can run efficiently within your 8GB VRAM limit. The zero token API cost further reduces operational expenses, making it an ideal choice for a budget-conscious project.\n\n#### Monthly Total Cost of Ownership (TCO) and Key Trade-offs:\n- **Qwen 2.5 Coder 3B Instruct**: $0.0 per month\n- **Runner-Up Alternatives**:\n  - Qwen 2.5 3B Instruct: The model requires more VRAM (~7.6 GB), which exceeds your limit, making it unsuitable for local deployment.\n  - Qwen 2.5 Coder 7B Instruct: While this model fits within the 8GB VRAM limit, its larger context window (128k tokens) is not optimal given your coding and reasoning tasks.\n\n### Key Trade-offs:\n- **Qwen 2.5 Coder 3B Instruct**: Best for local deployment with zero token API cost.\n- **Qwen 2.5 3B Instruct & Qwen 2.5 Coder 7B Instruct**: Require more VRAM or larger context windows, which may not be suitable for your project's constraints.\n\n### Summary:\n**Recommendation:** Deploy Qwen 2.5 Coder 3B Instruct using the Q4_K_M GGUF format on LM Studio to ensure efficient and cost-effective operation within your local deployment mode with Unsloth fine-tuning capabilities."
+      },
+      {
+        "scenario_name": "Recherche dans des dossiers réglementaires",
+        "expected_ids": [
+          "moonshotai/kimi-k3.1-pro",
+          "unbiased/pareto-26.9",
+          "google/gemini-4-argon"
+        ],
+        "selected_model_id": "moonshotai/kimi-k3.1-pro",
+        "selected_model_name": "MoonshotAI: Kimi K3.1 Pro",
+        "decision_match": true,
+        "candidate_grounded": true,
+        "constraint_compliant": true,
+        "constraint_failures": [],
+        "elapsed_seconds": 15.487051800009795,
+        "completion_tokens": 586,
+        "generation_tokens_per_second": 37.838060307877925,
+        "output": "### Recommendation\n\nGiven your project requirements for comparing long regulatory files and identifying clauses with references, the MoonshotAI: Kimi K3.1 Pro model is the optimal choice based on its strengths in handling large context windows (1048k tokens) and high reasoning capabilities (87.0%). This makes it particularly suitable for tasks like reasoning through complex documents.\n\n#### Why MoonshotAI: Kimi K3.1 Pro?\n- **Context Window**: With a 1048k token context, this model can handle the large volumes of text in your regulatory files efficiently.\n- **Reasoning Capability**: The high reasoning score (87.0%) indicates that it excels at understanding and processing complex information within these documents.\n\n### Deployment Advice\n\nFor deployment on cloud infrastructure with no Max VRAM constraints, you should use the quantized version of MoonshotAI: Kimi K3.1 Pro. Quantization reduces memory usage without significantly impacting performance. The recommended format for this model is GGUF (Google Generalized Universal Format), which is optimized for efficient deployment in cloud environments.\n\n#### Steps to Deploy:\n1. **Quantize the Model**: Convert the full precision version of MoonshotAI: Kimi K3.1 Pro into a quantized version using Q4_K_M or Q8_0.\n2. **Upload to Cloud Storage**: Upload the quantized GGUF model file to your cloud storage solution (e.g., Google Cloud, AWS S3).\n3. **Use Cloud API for Deployment**: Utilize the MoonshotAI Cloud API endpoint to deploy and serve the quantized model.\n\n### Monthly Total Cost of Ownership\n\n- **MoonshotAI: Kimi K3.1 Pro** - $70.0 per month\n- **Runner-up Pareto 26.9** - $62.5 per month\n- **Google Gemini 4 Argon** - $70.0 per month (same as MoonshotAI)\n\n#### Key Trade-offs:\n- **MoonshotAI: Kimi K3.1 Pro vs Pareto 26.9**: Both models are very similar in terms of cost and performance, but MoonshotAI has a slightly higher reasoning score. This slight edge might be crucial for your project if you require more nuanced understanding within the documents.\n- **Google Gemini 4 Argon**: Slightly overpriced compared to MoonshotAI due to its high context window (1048k tokens) and similar performance.\n\n### Conclusion\n\nMoonshotAI: Kimi K3.1 Pro is the best choice for your project given its superior reasoning capabilities within a reasonable budget. To deploy, quantize the model using Q4_K_M or Q8_0 GGUF format on your cloud infrastructure. This setup will allow you to leverage MoonshotAI's strengths while staying within your monthly cost constraints."
+      },
+      {
+        "scenario_name": "Extraction de reçus à faible coût",
+        "expected_ids": [
+          "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
+        ],
+        "selected_model_id": "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B",
+        "selected_model_name": "DeepSeek R1 Distill Qwen 7B",
+        "decision_match": true,
+        "candidate_grounded": true,
+        "constraint_compliant": true,
+        "constraint_failures": [],
+        "elapsed_seconds": 11.191022699989844,
+        "completion_tokens": 581,
+        "generation_tokens_per_second": 51.916613483460026,
+        "output": "### Architectural Recommendation for the Extraction de reçus à faible coût Project\n\n#### Why DeepSeek R1 Distill Qwen 7B is the Best Choice:\nDeepSeek R1 Distill Qwen 7B stands out as the best choice due to its strong performance in both coding and reasoning tasks, which are critical for your project. With a context window of up to 128k tokens, it can handle large JSON structures efficiently. Its high reasoning capability (89.5%) ensures that the model understands the complex logic involved in extracting fields from anonymized receipts. Additionally, its open-weight architecture allows for fine-tuning with Unsloth and enables self-hosting or serverless access via open-weight providers, which aligns well with your deployment mode of cloud.\n\n#### Deployment Advice:\nGiven your budget constraints (Max VRAM: None GB) and the need to deploy in a cloud environment, we recommend using DeepSeek R1 Distill Qwen 7B through the LM Studio. This approach leverages the open-weight architecture without requiring significant GPU resources. Here's how you can proceed:\n\n1. **Fine-Tuning**: Since this model is already fine-tuned and available as an open-weight, there’s no need for additional training or fine-tuning. You can directly use it in your cloud deployment.\n2. **LM Studio Deployment**: Use LM Studio to deploy the model without needing significant VRAM. This will allow you to leverage the large context window (128k tokens) and high reasoning capabilities while staying within your budget constraints.\n\n#### Monthly Total Cost of Ownership (TCO):\nGiven that DeepSeek R1 Distill Qwen 7B has a zero token API cost when run locally on LM Studio, there is no monthly cost associated with this model. The only consideration would be the cost for serverless access via open-weight providers if you choose to use them.\n\n### Key Trade-offs with Runner-Up Alternatives:\n- **Qwen 2.5 14B Instruct**: While it offers a larger context window (up to 128k tokens), its VRAM requirement of 11.5GB might exceed your budget constraints, making it less suitable for deployment in the cloud without additional hardware investment.\n  \n- **DeepSeek R1 Distill Qwen 1.5B**: Although this model has a smaller context window (64000 tokens) and lower VRAM requirement of 2.1GB, its reasoning capability is significantly lower at 78.4%, which might not meet the requirements for complex tasks like extracting fields from anonymized receipts.\n\n### Conclusion:\nDeepSeek R1 Distill Qwen 7B is the optimal choice given your project's constraints and requirements. It provides a robust solution with high performance in both coding and reasoning, along with flexibility in deployment options."
+      },
+      {
+        "scenario_name": "Tuteur de démonstration mathématique local",
+        "expected_ids": [
+          "Qwen/Qwen2.5-3B-Instruct",
+          "Qwen/Qwen2.5-Coder-3B-Instruct",
+          "Qwen/Qwen2.5-Coder-7B-Instruct"
+        ],
+        "selected_model_id": "Qwen/Qwen2.5-Coder-3B-Instruct",
+        "selected_model_name": "Qwen 2.5 Coder 3B Instruct",
+        "decision_match": true,
+        "candidate_grounded": true,
+        "constraint_compliant": true,
+        "constraint_failures": [],
+        "elapsed_seconds": 14.417225099983625,
+        "completion_tokens": 520,
+        "generation_tokens_per_second": 36.06796705980477,
+        "output": "### Architectural Recommendation for the Tuteur de démonstration mathématique local Project\n\n#### Why Qwen 2.5 Coder 3B Instruct is the Best Choice:\nQwen 2.5 Coder 3B Instruct stands out as the best choice due to its balanced performance in both reasoning and coding tasks, which are critical for a demonstration math tutor. It achieves high scores in both Reasoning (67.4) and Coding (81.6), making it well-suited for handling complex mathematical demonstrations and verifications.\n\nAdditionally, this model is fine-tunable with Unsloth, allowing you to customize its behavior further based on your specific needs. The fact that it runs within the 10GB VRAM limit of your local machine in full FP16 mode (7.6 GB) makes it a practical choice without requiring any additional hardware upgrades.\n\n#### Deployment and Fine-Tuning Advice:\nFor deployment, you should use the Q4_K_M GGUF format on LM Studio. This format is optimized for running models locally with minimal resource overhead and leverages the full power of your GPU within the 10GB VRAM limit. The zero-token API cost when run locally on LM Studio further reduces costs.\n\nRegarding fine-tuning, since this model is open-weighted (Apache-2.0 license), you can easily fine-tune it with Unsloth to adapt its capabilities to specific mathematical domains or user preferences without incurring additional licensing fees.\n\n#### Monthly Total Cost of Ownership (TCO) and Key Trade-offs:\nGiven the zero token API cost when running locally on LM Studio, there are no significant costs associated with this model. The primary considerations revolve around fine-tuning and any potential upgrades to your hardware if you anticipate needing more resources in the future.\n\n- **Qwen 2.5 Coder 3B Instruct**: $0.0\n- **Runner-Up Alternatives**:\n  - Qwen 2.5 Coder 7B Instruct: The larger model (128k token context) might be overkill for your current setup and could incur higher costs due to its larger memory footprint.\n  - Qwen 2.5 Instruct: While it matches the reasoning score, it does not offer a fine-tunable option and may have higher token costs if you need to use them frequently.\n\nIn summary, choosing **Qwen 2.5 Coder 3B Instruct** ensures optimal performance and cost-efficiency for your demonstration math tutor project within your constraints."
+      },
+      {
+        "scenario_name": "Synthèse rapide des demandes entrantes",
+        "expected_ids": [
+          "openai/gpt-4o-mini"
+        ],
+        "selected_model_id": "openai/gpt-4o-mini",
+        "selected_model_name": "GPT-4o Mini",
+        "decision_match": true,
+        "candidate_grounded": true,
+        "constraint_compliant": true,
+        "constraint_failures": [],
+        "elapsed_seconds": 9.963815200026147,
+        "completion_tokens": 515,
+        "generation_tokens_per_second": 51.687028478674364,
+        "output": "### Architectural Recommendation\n\n**Model Selection: GPT-4o Mini (openai/gpt-4o-mini)**\n\n**Why This Model is the Best Choice:**\nGPT-4o Mini offers a perfect balance of performance, cost-efficiency, and context window for your project. With an open API that supports cost-efficient pricing at around $0.38/1M tokens (or ~$4.5/mo), it ensures real-time response times without breaking the budget. Its large 128k token context window allows handling complex incoming messages effectively, which is crucial for your task of summarizing and responding to chat messages.\n\n**Deployment Advice:**\nGiven that you are deploying in a cloud environment with no max VRAM constraints, the best deployment strategy would be through the Cloud API. This leverages GPT-4o Mini's open API, enabling seamless integration without needing to manage additional resources or worry about fine-tuning costs (as it is an open-source model). The Cloud API also provides cost-efficiency and performance optimization.\n\n**Monthly Total Cost of Ownership:**\nThe monthly total cost for deploying GPT-4o Mini in the cloud would be $4.5, which aligns well within your budget constraints. This includes the base cost of running the model through its open API without any additional fine-tuning or resource management costs.\n\n### Key Trade-offs with Runner-Up Alternatives\n\n**DeepSeek V3 (deepseek-ai/DeepSeek-V3):**\nWhile DeepSeek V3 offers a larger context window and is also fine-tunable, it comes at a significantly higher cost. The monthly cost of $8.2/mo makes it unaffordable within your budget constraints.\n\n**Llama 3.3 70B Instruct (meta-llama/Llama-3.3-70B-Instruct):**\nDespite offering the largest context window and being fine-tunable, Llama 3.3 is priced at $9.85/mo, which exceeds your budget of $2.0 per month. This makes it an impractical choice for your project.\n\n### Summary\n**GPT-4o Mini (openai/gpt-4o-mini)** is the optimal model selection given your constraints and requirements. Its cost-efficiency, large context window, and open API make it a compelling choice for real-time chat summarization tasks. The deployment strategy through its cloud API ensures that you can leverage these benefits without incurring additional costs or resource management overhead."
+      },
+      {
+        "scenario_name": "Classification sur appareil industriel",
+        "expected_ids": [
+          "Qwen/Qwen2.5-0.5B-Instruct"
+        ],
+        "selected_model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+        "selected_model_name": "Qwen2.5-0.5B-Instruct",
+        "decision_match": true,
+        "candidate_grounded": true,
+        "constraint_compliant": true,
+        "constraint_failures": [],
+        "elapsed_seconds": 15.665543799987063,
+        "completion_tokens": 592,
+        "generation_tokens_per_second": 37.78994253621052,
+        "output": "### Architectural Recommendation for Classification Project\n\n#### Why Qwen2.5-0.5B-Instruct is the Best Choice:\nQwen2.5-0.5B-Instruct stands out as the optimal choice due to its balance of performance, resource efficiency, and cost-effectiveness within your constraints. It offers a 94.8% match on classification tasks, which is highly competitive. The model's context window of 32768 tokens aligns well with your requirement for handling short observations. Additionally, it fits comfortably into the 3.5 GB VRAM limit by running in full FP16 mode (~2.0 GB), leaving ample space for other system resources.\n\n#### Deployment Advice:\nGiven that you are deploying locally on a device with max VRAM of 3.5 GB and your primary task is classification, it's best to deploy Qwen2.5-0.5B-Instruct using the Q4_K_M quantization format (Q4_K_M). This format allows for efficient deployment in environments where you have limited VRAM but still require a model that can handle complex tasks like classification. The model will be available as a GGUF file, which is compatible with LM Studio and supports zero-token API costs when run locally.\n\n#### Monthly Total Cost of Ownership (TCO):\nThe monthly TCO for Qwen2.5-0.5B-Instruct is $0.0, making it cost-free to own and operate within your budget constraints. This model's open weights allow for fine-tuning with Unsloth, which can be beneficial if you plan to customize the model further based on specific industry needs.\n\n#### Key Trade-offs with Runner-Up Alternatives:\n- **Qwen2.5-1.5B-Instruct**: While this model offers a larger context window (32768 vs 64000), it requires more VRAM (~2.4 GB) to run in full FP16 mode, which exceeds your available 3.5 GB limit. This makes it less suitable for deployment on your device.\n- **DeepSeek R1 Distill Qwen 1.5B**: Although this model also fits within the 3.5 GB VRAM limit by running in Q8_0 GGUF format (~3.1 GB), its larger context window (64000 vs 32768) might not be necessary for your short observation tasks, potentially leading to wasted resources.\n\n### Summary:\n**Qwen2.5-0.5B-Instruct** is the best choice due to its optimal balance of performance and resource efficiency within your constraints. It offers a high match score on classification tasks, fits comfortably into your VRAM limit, and comes with zero token API costs when deployed locally. Fine-tuning options are also available through open weights, making it highly flexible for future customizations."
+      },
+      {
+        "scenario_name": "Assistant documentaire souverain",
+        "expected_ids": [
+          "Qwen/Qwen2.5-Coder-7B-Instruct",
+          "meta-llama/Llama-3.1-8B-Instruct",
+          "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
+        ],
+        "selected_model_id": "Qwen/Qwen2.5-Coder-7B-Instruct",
+        "selected_model_name": "Qwen 2.5 Coder 7B Instruct",
+        "decision_match": true,
+        "candidate_grounded": true,
+        "constraint_compliant": true,
+        "constraint_failures": [],
+        "elapsed_seconds": 15.125426499987952,
+        "completion_tokens": 782,
+        "generation_tokens_per_second": 51.70102145553535,
+        "output": "For the Assistant documentaire souverain project, I recommend using Qwen 2.5 Coder 7B Instruct as your optimal Large Language Model (LLM) for this task. Here's a detailed explanation of why this model is best suited and how to deploy or fine-tune it:\n\n### Why Qwen 2.5 Coder 7B Instruct is the Best Choice\n\n**1. VRAM Efficiency:** \nQwen 2.5 Coder 7B Instruct runs in full FP16 mode, which fits within your 20 GB of VRAM. This model requires only 7.1 GB of VRAM per instance, making it highly efficient for deployment on a system with limited VRAM.\n\n**2. Context Window and Task Suitability:**\nThe context window is large at 128k tokens, which is more than sufficient for indexing internal documentation. Additionally, the model excels in both coding (Coding: 88.4) and reasoning tasks (Reasoning: 73.2), making it well-suited for your project's requirements.\n\n**3. Open-Weights License:** \nThe model uses open weights under the Apache-2.0 license, allowing you to fine-tune it with Unsloth without any additional costs or restrictions.\n\n### Deployment and Fine-Tuning Advice\n\nGiven that Qwen 2.5 Coder 7B Instruct runs in full FP16 mode within your VRAM constraints, you can deploy it directly on LM Studio for local execution. This setup is ideal because it leverages the zero-token API cost when run locally.\n\n#### Deployment Mode:\n- **LM Studio:** Since Qwen 2.5 Coder 7B Instruct requires only 7.1 GB of VRAM and runs in full FP16 mode, you can deploy this model directly on LM Studio without needing to quantize it further. This setup is cost-effective as there are no API costs associated with running the model locally.\n\n#### Fine-Tuning:\n- **Fine-tuning:** If you plan to fine-tune Qwen 2.5 Coder 7B Instruct, you can do so using LM Studio's capabilities. The open weights and Apache-2.0 license allow for flexible fine-tuning without additional costs or restrictions.\n  \n### Monthly Total Cost of Ownership (TCO)\n\n**Qwen 2.5 Coder 7B Instruct:**\n- **Cost:** $0.0\n- **Strengths:** High efficiency in VRAM, large context window, and open weights for fine-tuning.\n\nGiven the zero-token API cost when run locally on LM Studio and its high performance in both coding and reasoning tasks, Qwen 2.5 Coder 7B Instruct is a compelling choice with minimal costs involved.\n\n### Key Trade-offs with Runner-Up Alternatives\n\n**Llama 3.1 8B Instruct:**\n- **Cost:** $0.0\n- **Strengths:** Similar VRAM requirements and large context window, but it runs in Q8_0 GGUF mode which requires more VRAM (11.8 GB) compared to the full FP16 of Qwen 2.5 Coder 7B Instruct.\n\n**DeepSeek R1 Distill Qwen 7B:**\n- **Cost:** $0.0\n- **Strengths:** High reasoning capability, but it requires more VRAM (19.9 GB) to run in full FP16 mode, making it less efficient compared to the 20 GB of your system.\n\nIn conclusion, Qwen 2.5 Coder 7B Instruct is the optimal choice for your project due to its efficiency, cost-effectiveness, and strong performance in both coding and reasoning tasks."
+      },
+      {
+        "scenario_name": "Revue automatisée de dépôts logiciels",
+        "expected_ids": [
+          "moonshotai/kimi-k3.1-pro",
+          "reflection/beam-1.0-501b-a23b",
+          "unbiased/pareto-26.9"
+        ],
+        "selected_model_id": "moonshotai/kimi-k3.1-pro",
+        "selected_model_name": "MoonshotAI: Kimi K3.1 Pro",
+        "decision_match": true,
+        "candidate_grounded": true,
+        "constraint_compliant": true,
+        "constraint_failures": [],
+        "elapsed_seconds": 18.98167300003115,
+        "completion_tokens": 756,
+        "generation_tokens_per_second": 39.82789082915712,
+        "output": "### Architectural Recommendation\n\n#### Why MoonshotAI is the Best Choice:\nMoonshotAI's Kimi K3.1 Pro model stands out for its robust context window of 1048576 tokens, which allows handling large-scale software project analysis tasks efficiently. This high-context capability ensures that all changes and dependencies are considered in your analysis, providing a comprehensive understanding of the system.\n\nThe model also excels in coding (88.0%) and reasoning (87.0%), making it well-suited for both technical and analytical aspects of your Revue automatisée de dépôts logiciels project. Its strong performance across these tasks makes it an ideal fit, especially considering the need to analyze changes and identify potential regression risks.\n\n### Deployment Advice:\nGiven that you are deploying on a cloud platform with maximum VRAM (Max VRAM: None GB), MoonshotAI's deployment mode is best suited for its CloudGB configuration. This will allow leveraging the model's large context window effectively, ensuring efficient processing of your software project analysis tasks.\n\n#### Quantization / Deployment Options:\nFor quantization and deployment on LM Studio or a cloud API, you can choose Q4_K_M (Quantized 4-bit with Knowledge distillation) or Q8_0 GGUF. Both options are suitable for optimizing MoonshotAI's performance while maintaining its high-quality context window.\n\n- **Q4_K_M**: This quantization method reduces the model size without significantly compromising accuracy, making it a good choice for cost optimization and resource management.\n- **Q8_0 GGUF**: Suitable if you prioritize fine-tuning capabilities or need additional control over the deployment process. However, this might be slightly more complex to set up.\n\n### Monthly Total Cost of Ownership (TCO) and Key Trade-offs:\n#### MoonshotAI's TCO:\n- **Cost**: $70.0/mo\n- **Strengths**:\n  - Large context window for comprehensive analysis.\n  - Strong coding benchmark and reasoning capability.\n- **Key Trade-offs**:\n  - High cost compared to alternatives (e.g., Reflection Beam).\n  - Requires a significant amount of VRAM, which may not be available in your deployment mode.\n\n#### Runner-Up Alternatives:\n\n1. **Reflection: Beam 1.0 501B A23B**:\n   - **Cost**: $8.0/mo\n   - **Strengths**:\n     - Large context window (1048576 tokens).\n     - Strong coding benchmark and reasoning capability.\n   - **Key Trade-offs**:\n     - Lower cost compared to MoonshotAI.\n     - Smaller context window, which might limit the analysis scope.\n\n2. **Pareto 26.9**:\n   - **Cost**: $62.5/mo\n   - **Strengths**:\n     - Large context window (262144 tokens).\n     - Strong coding benchmark and reasoning capability.\n   - **Key Trade-offs**:\n     - Higher cost compared to MoonshotAI.\n     - Smaller context window, which might limit the analysis scope.\n\n### Summary:\n- **Recommendation**: Given your project's constraints and requirements, MoonshotAI's Kimi K3.1 Pro is the best choice due to its superior coding and reasoning capabilities along with a large context window suitable for comprehensive software project analysis.\n- **Deployment**: Deploy using CloudGB configuration on LM Studio or cloud API with Q4_K_M quantization method for optimal performance and cost-effectiveness.\n\nBy choosing MoonshotAI, you ensure that your project is well-equipped to handle the complexity of analyzing multiple software repositories while maintaining a balance between cost and functionality."
+      },
+      {
+        "scenario_name": "Croisement de subventions longues",
+        "expected_ids": [
+          "deepseek/deepseek-v4.1-flash-1017",
+          "nvidia/nemotron-3.5-super-vl",
+          "mistralai/mistral-large-4-0"
+        ],
+        "selected_model_id": "deepseek/deepseek-v4.1-flash-1017",
+        "selected_model_name": "DeepSeek: DeepSeek V4.1 Flash 1017",
+        "decision_match": true,
+        "candidate_grounded": true,
+        "constraint_compliant": true,
+        "constraint_failures": [],
+        "elapsed_seconds": 13.630686899996363,
+        "completion_tokens": 711,
+        "generation_tokens_per_second": 52.16171460883528,
+        "output": "### Why DeepSeek is the Best Architectural Choice for Your Project\n\n**DeepSeek V4.1 Flash 1017 (deepseek/deepseek-v4.1-flash-1017)** is the optimal choice for your Croisement de subventions longues project due to its high match score, large context window, and cost-efficiency. Here's a detailed breakdown of why DeepSeek stands out:\n\n1. **Large Context Window**: With a 1048k token context window, you can handle complex projects with intricate dependencies between different parts of your subvention dossiers without running into limitations.\n\n2. **Fine-Tunable Open-Weights**: The model's open weights allow for fine-tuning with Unsloth, which is crucial for adapting the model to specific tasks and datasets relevant to your project. This flexibility ensures that you can optimize the model for better performance on your specific use case.\n\n3. **Cost-Efficient API**: At ~$0.25 per 1M tokens, DeepSeek offers a cost-efficient solution compared to other models like Nemotron 3.5 Super VL and Mistral Large 4. This translates into lower monthly costs of $2.56 for your project.\n\n### Deployment Advice\n\nGiven that you are deploying on the cloud with no max VRAM constraint, we recommend using DeepSeek's CloudGB deployment option. Here’s how to proceed:\n\n1. **Quantization**: For optimal performance and cost-efficiency, consider quantizing the model from Q4_K_M to Q8_0 GGUF format. This can significantly reduce the model size while maintaining accuracy. You can use LM Studio for this process.\n\n2. **Model Serving**: Deploy DeepSeek using an API Gateway (e.g., AWS API Gateway or Google Cloud API Gateway) that integrates with your cloud provider's backend services. Ensure you have a robust security layer in place to protect your models and data.\n\n### Monthly Total Cost of Ownership (TCO)\n\n- **DeepSeek V4.1 Flash 1017**: $2.56 per month\n- **Nemotron 3.5 Super VL**: $3.85 per month\n- **Mistral Large 4**: $17.5 per month\n\n**Key Trade-offs with Runner-Up Alternatives:**\n\n- **DeepSeek V4.1 Flash 1017**: While slightly more expensive than Nemotron, it offers a larger context window and is fine-tunable via open weights, making it the best choice for your project.\n  \n- **Nemotron 3.5 Super VL**: Offers better performance but comes at a higher cost ($3.85/mo vs $2.56/mo). The model's smaller context window (76k tokens) might be limiting for complex projects like yours.\n\n- **Mistral Large 4**: While very powerful, it is the most expensive option and has a smaller context window (1024k tokens), making it less suitable for your project’s requirements.\n\n### Conclusion\n\n**DeepSeek V4.1 Flash 1017** is the best choice for your Croisement de subventions longues project due to its large context window, fine-tunable open weights, and cost-efficiency. By deploying DeepSeek on CloudGB with quantization to Q8_0 GGUF format, you can achieve optimal performance at a reasonable monthly cost of $2.56."
+      },
+      {
+        "scenario_name": "Résumé local des échanges de support",
+        "expected_ids": [
+          "meta-llama/Llama-3.1-8B-Instruct",
+          "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B",
+          "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"
+        ],
+        "selected_model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "selected_model_name": "Llama 3.1 8B Instruct",
+        "decision_match": true,
+        "candidate_grounded": true,
+        "constraint_compliant": true,
+        "constraint_failures": [],
+        "elapsed_seconds": 14.998808500007726,
+        "completion_tokens": 561,
+        "generation_tokens_per_second": 37.40297104264722,
+        "output": "### Architectural Recommendation:\n\nGiven the project constraints of requiring 12GB VRAM for deployment in a local environment, the #1 model candidate is **Llama 3.1 8B Instruct** from Meta-Llama (meta-llama/Llama-3.1-8B-Instruct). This model offers several key advantages that make it an optimal choice:\n\n#### Strengths of Llama 3.1 8B Instruct:\n1. **Near-lossless Q8_0 GGUF Quantization**: The model is compatible with the near-lossless quantization format (Q8_0 GGUF), which allows for efficient deployment in a 12GB VRAM environment.\n2. **Open-weights Architecture**: This architecture enables fine-tuning using Unsloth, providing flexibility and customization options post-deployment.\n3. **Large Context Window**: It supports up to 128k tokens, which is more than sufficient for handling the context-sensitive nature of your project (support chat).\n4. **Zero Token API Cost**: Running locally on LM Studio means no cost associated with API calls.\n\n### Deployment Advice:\nFor deployment in a local environment within the given constraints (Max VRAM: 12GB), you should use the Q8_0 GGUF quantized version of Llama 3.1 8B Instruct. This format is optimized for efficient memory usage and can be deployed using LM Studio, which supports this specific quantization format.\n\n### Monthly Total Cost of Ownership (TCO):\n- **Llama 3.1 8B Instruct**: $0.0\n- **DeepSeek R1 Distill Qwen 7B**: $0.0\n- **DeepSeek R1 Distill Qwen 1.5B**: $0.0\n\n**Key Trade-offs with Runner-Up Alternatives:**\n- **DeepSeek R1 Distill Qwen 7B**: While it fits within the VRAM constraints, its lower reasoning capability (89.5%) might not be as suitable for tasks requiring high-level understanding and context sensitivity.\n- **DeepSeek R1 Distill Qwen 1.5B**: This model runs in full FP16 mode but only supports a smaller context window of 64k tokens, which could limit its effectiveness for your project.\n\n### Conclusion:\n**Llama 3.1 8B Instruct** is the best choice due to its compatibility with near-lossless quantization formats (Q8_0 GGUF), open-weights architecture allowing for fine-tuning, and a large context window suitable for handling complex support chat tasks. The zero token API cost when deployed locally on LM Studio further enhances its suitability for your project's needs."
+      },
+      {
+        "scenario_name": "Assistant SQL pour un poste de travail",
+        "expected_ids": [
+          "Qwen/Qwen2.5-3B-Instruct",
+          "Qwen/Qwen2.5-Coder-3B-Instruct",
+          "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"
+        ],
+        "selected_model_id": "Qwen/Qwen2.5-Coder-3B-Instruct",
+        "selected_model_name": "Qwen 2.5 Coder 3B Instruct",
+        "decision_match": true,
+        "candidate_grounded": true,
+        "constraint_compliant": true,
+        "constraint_failures": [],
+        "elapsed_seconds": 9.065311199985445,
+        "completion_tokens": 460,
+        "generation_tokens_per_second": 50.742880178315175,
+        "output": "### Architectural Recommendation for Your SQL Assistant Project\n\n#### Why Qwen 2.5 Coder 3B Instruct is the Best Choice:\nQwen 2.5 Coder 3B Instruct stands out as the optimal choice for your project due to its superior coding performance (81.6%) and strong reasoning capabilities (67.4%). This model's high match score (99.5%) ensures it can closely align with SQL tasks, making it highly effective in assisting analysts with writing, correcting, and explaining SQL queries.\n\n#### Deployment Advice:\nGiven your deployment mode is local with 6GB of VRAM, the best approach would be to use Q8_0 GGUF quantization format, which fits within the available VRAM. This model can run efficiently using the Qwen/Qwen2.5-Coder-3B-Instruct architecture and leverage Unsloth for fine-tuning if needed.\n\n#### Monthly Total Cost of Ownership (TCO):\nThe monthly cost for running Qwen 2.5 Coder 3B Instruct is $0, which aligns perfectly with your budget constraints. The zero token API cost when run locally on LM Studio ensures minimal expenses and maximum efficiency.\n\n### Key Trade-offs with the Runner-Up Alternatives:\n1. **Qwen 2.5 3B Instruct**: While this model also fits within the VRAM requirements (2.5GB), its coding performance is slightly lower at 71.5%, which might not be sufficient for your project's needs, especially considering it does not have a strong reasoning component.\n\n2. **DeepSeek R1 Distill Qwen 1.5B**: This model runs in full FP16 mode within the VRAM limit (5GB), but its coding performance is lower at 62.0%, and reasoning ability is slightly higher at 78.4%. Although it fits your VRAM requirements, its coding benchmark score might not be as strong as Qwen 2.5 Coder 3B Instruct.\n\nIn summary, choosing Qwen 2.5 Coder 3B Instruct maximizes the benefits of a model that is finely tuned for SQL tasks and efficiently utilizes the available VRAM with minimal cost."
+      },
+      {
+        "scenario_name": "Révision multilingue de contenus",
+        "expected_ids": [
+          "deepseek-ai/DeepSeek-V3",
+          "meta-llama/Llama-3.3-70B-Instruct"
+        ],
+        "selected_model_id": "deepseek-ai/DeepSeek-V3",
+        "selected_model_name": "DeepSeek V3",
+        "decision_match": true,
+        "candidate_grounded": true,
+        "constraint_compliant": true,
+        "constraint_failures": [],
+        "elapsed_seconds": 15.256667899957392,
+        "completion_tokens": 566,
+        "generation_tokens_per_second": 37.09853316015227,
+        "output": "### Architectural Recommendation\n\nFor your multilingual content revision project, I recommend using **DeepSeek V3** by DeepSeek AI as the best choice for this scenario.\n\n#### Why DeepSeek V3 is the Best Choice:\n1. **Context Window**: DeepSeek V3 offers a large context window of 128k tokens, which is ideal for handling multilingual content that may require extensive context to understand and revise.\n2. **Reasoning Capability**: With a high reasoning score of 89.1%, it excels in tasks requiring complex logical thinking and understanding, such as content revision and reformulation.\n3. **Fine-Tuning with Unsloth**: DeepSeek V3 is fine-tunable using the Unsloth framework, allowing for customization to better fit your specific needs without needing to retrain from scratch.\n\n### Deployment Advice:\nFor deployment on a cloud platform with no maximum VRAM limit (Max VRAM: None GB), I recommend leveraging **Q4_K_M Quantization**. This quantization method reduces model size and computational requirements while maintaining performance, making it suitable for cost-effective cloud deployments.\n\n#### Steps to Deploy DeepSeek V3:\n1. **Quantization**: Use Q4_K_M quantization (GGUF format) on the Cloud API to reduce memory usage without significantly impacting performance.\n2. **Cloud API Integration**: Integrate the optimized model into your application via the Cloud API, ensuring smooth and efficient processing.\n\n### Monthly Total Cost of Ownership (TCO):\n- **DeepSeek V3**: $8.2 per month\n- **Runner-Up Alternatives**:\n  - Llama 3.3: ~$9.85 per month\n  - DeepSeek R1 Distill Qwen 7B: ~$0.69/1M tokens, resulting in a monthly cost of ~$0.0\n\n#### Key Trade-offs with Runner-Up Alternatives:\n- **Llama 3.3**: While it offers high reasoning capabilities and is fine-tunable via Unsloth, its larger context window (128k) might not be as efficient given your project's specific needs.\n- **DeepSeek R1 Distill Qwen 7B**: Although self-hosted or accessed via serverless open-weight providers, this model has a smaller context window and is less fine-tunable. The cost-efficient API (~$0.69/1M tokens) might not be as economical given your project's token usage.\n\n### Conclusion:\n**DeepSeek V3** provides the best balance of performance (high reasoning capability), efficiency in deployment, and cost-effectiveness for your project needs. With Q4_K_M quantization on the Cloud API, you can achieve optimal resource utilization while maintaining high-quality output at a reasonable monthly TCO."
+      }
+    ],
+    "qwen2.5-3b-instruct": [
+      {
+        "scenario_name": "Assistant de migration hors ligne",
+        "expected_ids": [
+          "Qwen/Qwen2.5-3B-Instruct",
+          "Qwen/Qwen2.5-Coder-3B-Instruct",
+          "Qwen/Qwen2.5-Coder-7B-Instruct"
+        ],
+        "selected_model_id": "Qwen/Qwen2.5-Coder-3B-Instruct",
+        "selected_model_name": "Qwen 2.5 Coder 3B Instruct",
+        "decision_match": true,
+        "candidate_grounded": true,
+        "constraint_compliant": true,
+        "constraint_failures": [],
+        "elapsed_seconds": 16.533896900014952,
+        "completion_tokens": 573,
+        "generation_tokens_per_second": 34.656076753416905,
+        "output": "### Architectural Recommendation\n\nGiven the constraints of your project—specifically, needing an assistant for offline code migration with 8GB VRAM available on a local station—and considering the top-scraped candidates, **Qwen 2.5 Coder 3B Instruct** is the optimal choice.\n\n#### Why Qwen 2.5 Coder 3B Instruct?\n\n1. **VRAM Efficiency**: The model runs in full FP16 mode within your 8GB VRAM limit, leveraging Q4 quantization which reduces memory footprint without sacrificing too much performance.\n   \n2. **Context Window and Tasks**: With a context window of 32768 tokens (Qwen/Qwen2.5-Coder-3B-Instruct), it can handle large code snippets and reasoning tasks effectively.\n\n3. **Coding Performance**: The model excels in coding tasks with a benchmark score of 81.6%, which is significantly higher than the other models, making it more suitable for your primary task of coding migration.\n\n4. **Open-Weights**: It uses open-source weights under the Apache-2.0 license, allowing you to fine-tune it further using Unsloth, enhancing its capabilities and adaptability to specific use cases.\n\n5. **Zero Token API Cost**: Running locally on LM Studio or Cloud API ensures zero token costs when deployed in this mode, which is crucial for your budget constraints.\n\n### Deployment Advice\n\nFor deployment:\n- **Quantization/Q8_0 GGUF on LM Studio**: Since the model already runs efficiently with Q4 quantization within the 8GB VRAM limit, deploying it using Q8_0 GGUF (which is a higher precision quantization) might be beneficial for further optimization. However, given your budget constraints and the fact that you are running locally, sticking with Q4 should suffice.\n  \n### Monthly Total Cost of Ownership\n\nGiven the model's open-source nature and zero token costs when deployed locally:\n- **Monthly TCO**: $0.0\n- **Key Trade-offs**:\n  - If you were to consider a higher precision quantization (Q8_0 GGUF), it would come with a slight increase in memory usage but could potentially improve performance, especially for tasks that require more precise reasoning or coding.\n  - For fine-tuning the model further, Unsloth can be leveraged to adapt Qwen 2.5 Coder 3B Instruct to specific use cases without additional cost.\n\n### Conclusion\n\n**Qwen 2.5 Coder 3B Instruct** is the best choice for your project due to its efficient memory usage within your VRAM limit, strong coding performance, and open-source nature. Deploying it using Q4 quantization on LM Studio will ensure optimal resource utilization without incurring additional costs."
+      },
+      {
+        "scenario_name": "Recherche dans des dossiers réglementaires",
+        "expected_ids": [
+          "moonshotai/kimi-k3.1-pro",
+          "unbiased/pareto-26.9",
+          "google/gemini-4-argon"
+        ],
+        "selected_model_id": "moonshotai/kimi-k3.1-pro",
+        "selected_model_name": "MoonshotAI: Kimi K3.1 Pro",
+        "decision_match": true,
+        "candidate_grounded": true,
+        "constraint_compliant": true,
+        "constraint_failures": [],
+        "elapsed_seconds": 13.380307500017807,
+        "completion_tokens": 698,
+        "generation_tokens_per_second": 52.166215163520796,
+        "output": "### Recommendation\n\nGiven your project requirements for searching through lengthy regulatory documents and extracting clauses with their references, the #1 model in our list is MoonshotAI: Kimi K3.1 Pro (moonshotai/kimi-k3.1-pro). This model offers a large context window of 1048576 tokens, which is ideal for handling long dossiers of text. It also excels with reasoning capabilities at 88%, making it well-suited for tasks that require understanding and extracting complex information.\n\n### Why MoonshotAI: Kimi K3.1 Pro?\n\n**Why the #1 Model is Best:**\n- **Large Context Window:** The model supports a context window of up to 1048576 tokens, allowing you to process entire dossiers without truncation.\n- **High Reasoning Capabilities:** With reasoning scores at 88%, it can effectively analyze and understand the documents, which is crucial for tasks like comparing clauses and finding references.\n\n### Deployment Advice\n\nFor deployment in a cloud environment with no maximum VRAM constraints (Max VRAM: None GB), we recommend using MoonshotAI's GGUF optimized model. This will allow you to leverage the large context window while keeping costs manageable:\n\n**Deployment Strategy:**\n- **Quantization:** Use Q4_K_M quantization for the GGUF format, which is suitable for cloud deployment and provides a good balance between performance and resource utilization.\n- **Model Format:** Deploy as a Cloud API. This allows you to scale resources dynamically based on your project's needs without incurring high upfront costs.\n\n### Monthly Total Cost of Ownership (TCO)\n\n**Current TCO:**\n- **MoonshotAI K3.1 Pro:** $70.0 per month\n\n**Runner-Up Alternatives and Their Costs:**\n- **Pareto 26.9:** $62.5 per month\n- **Google Gemini 4 Argon:** $70.0 per month (same as MoonshotAI K3.1 Pro)\n\n### Key Trade-offs\n\n- **MoonshotAI K3.1 Pro vs Pareto 26.9:**\n  - **Pareto 26.9** offers a slightly larger context window at 262144 tokens, but it costs $5 cheaper per month.\n  - **MoonshotAI K3.1 Pro** excels in reasoning and has the same cost as Pareto 26.9, making it more robust for complex tasks like your regulatory document search.\n\n- **Google Gemini 4 Argon vs MoonshotAI K3.1 Pro:**\n  - Both models have identical performance but differ in pricing.\n  - Google Gemini 4 Argon costs $5 more per month at $70.0, which may be a consideration if you're already on the higher end of your budget.\n\n### Conclusion\n\nGiven the need for high reasoning capabilities and large context windows, MoonshotAI: Kimi K3.1 Pro is the best choice. Deploying it as a Cloud API with Q4_K_M quantization will provide optimal performance while keeping costs within your $12.0 per month budget. The trade-off between Pareto 26.9 and Google Gemini 4 Argon lies in their reasoning capabilities, making MoonshotAI K3.1 Pro the clear winner for this project."
+      },
+      {
+        "scenario_name": "Extraction de reçus à faible coût",
+        "expected_ids": [
+          "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
+        ],
+        "selected_model_id": "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B",
+        "selected_model_name": "DeepSeek R1 Distill Qwen 7B",
+        "decision_match": true,
+        "candidate_grounded": true,
+        "constraint_compliant": true,
+        "constraint_failures": [],
+        "elapsed_seconds": 18.87793459999375,
+        "completion_tokens": 754,
+        "generation_tokens_per_second": 39.940810050282174,
+        "output": "### Recommendation for the Extraction de reçus à faible coût Project\n\n#### Why DeepSeek R1 Distill Qwen 7B is the Best Architectural Choice:\n- **Context Window**: The model has a large context window of 128,000 tokens, which is more than sufficient for handling the extraction and reasoning tasks required in your project.\n- **Reasoning Capability**: With a high reasoning capability at 89.5%, this model excels in understanding complex instructions and extracting relevant information from text inputs.\n- **Fine-Tuning with Unsloth**: The model supports fine-tuning, which allows you to adapt the model's capabilities to better suit your specific use case of extracting JSON fields from anonymized receipts.\n\n#### Deployment Advice:\nGiven that your deployment mode is cloud (Max VRAM: None GB), it might be challenging to utilize a model like DeepSeek R1 Distill Qwen 7B, which requires significant VRAM. However, you can still leverage this model by deploying it on a serverless open-weight provider or self-hosting it on a suitable platform.\n\nFor deployment:\n- **Q4_K_M Quantization**: Since the context window is large (128000 tokens), using Q4_K_M quantization might be beneficial. This approach reduces the model's memory footprint without significantly compromising performance.\n- **GGUF Format**: Use the GGUF format for deployment, which is optimized for serverless environments and can help in managing the model efficiently.\n\n#### Monthly Total Cost of Ownership (TCO) and Key Trade-offs:\n**DeepSeek R1 Distill Qwen 7B:**\n- **Monthly Cost**: $0.0\n- **Strengths**: High reasoning capability, large context window, open weights for fine-tuning.\n- **Trade-offs**: Requires significant VRAM, which might be a limitation in cloud environments without dedicated GPU resources.\n\n**Runner-Up Alternatives (Qwen 2.5 14B Instruct and DeepSeek R1 Distill Qwen 1.5B):**\n- **DeepSeek R1 Distill Qwen 1.5B**: \n  - **Monthly Cost**: $0.0\n  - **Strengths**: Lower VRAM requirement, still high reasoning capability.\n  - **Trade-offs**: Smaller context window (64000 tokens), lower reasoning capability (78.4%).\n\n- **Qwen 2.5 14B Instruct**:\n  - **Monthly Cost**: $0.0\n  - **Strengths**: Larger model size, potentially better performance for complex tasks.\n  - **Trade-offs**: Higher VRAM requirement, higher cost.\n\n### Conclusion:\nGiven the constraints and requirements of your project, **DeepSeek R1 Distill Qwen 7B** is the optimal choice due to its high reasoning capability and large context window. While it requires significant VRAM, this can be mitigated by using serverless open-weight providers or self-hosting on a suitable platform with optimized quantization formats like Q4_K_M GGUF.\n\nThe monthly TCO for DeepSeek R1 Distill Qwen 7B is $0.0, making it the most cost-effective option without any additional costs. The runner-up alternatives offer similar reasoning capabilities but come at higher VRAM requirements and potentially increased costs, which might not be feasible in your cloud deployment mode.\n\n### Fine-Tuning Advice:\nIf you decide to fine-tune this model for better performance on your specific use case, consider using the open-weight format (MIT license) provided by Unsloth. This will allow you to further optimize the model's parameters without needing proprietary software or hardware resources."
+      },
+      {
+        "scenario_name": "Tuteur de démonstration mathématique local",
+        "expected_ids": [
+          "Qwen/Qwen2.5-3B-Instruct",
+          "Qwen/Qwen2.5-Coder-3B-Instruct",
+          "Qwen/Qwen2.5-Coder-7B-Instruct"
+        ],
+        "selected_model_id": "Qwen/Qwen2.5-3B-Instruct",
+        "selected_model_name": "Qwen 2.5 3B Instruct",
+        "decision_match": true,
+        "candidate_grounded": true,
+        "constraint_compliant": true,
+        "constraint_failures": [],
+        "elapsed_seconds": 15.375570499978494,
+        "completion_tokens": 800,
+        "generation_tokens_per_second": 52.030589694289326,
+        "output": "### Architectural Recommendation for the Tuteur de démonstration mathématique local project\n\n#### 1. Why Qwen 2.5 Instruct (Qwen/Qwen2.5-3B-Instruct) is the Best Choice:\n   - **VRAM Efficiency**: The model runs in full FP16 mode, fitting within your 10 GB VRAM limit.\n   - **Context Window and Reasoning Capabilities**: With a context window of 32768 tokens (equivalent to 32.7 KB), it can handle complex mathematical demonstrations effectively.\n   - **Fine-Tuning Flexibility**: The model is open-weighted, allowing for fine-tuning with Unsloth, which is crucial for adapting the LLM to your specific domain and tasks.\n   - **Cost-Effective Deployment**: Zero token API cost when run locally on LM Studio ensures that you don't incur any additional costs beyond the initial setup.\n\n#### 2. Quantization / Deployment Advice:\n   - **Quantization**: Since Qwen 2.5 Instruct is already running in full FP16 mode, which fits within your VRAM limit, no quantization is necessary.\n   - **Deployment on LM Studio**:\n     - Use the Q4_K_M GGUF format for deployment on LM Studio. This format optimizes resource usage and ensures smooth performance with minimal overhead.\n\n#### 3. Monthly Total Cost of Ownership (TCO) and Key Trade-offs:\n\n- **Qwen 2.5 Instruct (Qwen/Qwen2.5-3B-Instruct)**:\n   - **Monthly TCO**: $0.0\n   - **Key Trade-offs**:\n     - **Limited Context Window**: While the model can handle complex demonstrations, its context window is relatively small at 32768 tokens. For very long or intricate mathematical explanations, you might need to split them into smaller parts.\n     - **Fine-Tuning Flexibility**: Although open-weighted and fine-tunable with Unsloth, this flexibility comes with a cost in terms of computational resources during the fine-tuning process.\n\n- **Qwen 2.5 Coder 3B Instruct (Qwen/Qwen2.5-Coder-3B-Instruct)**:\n   - **Monthly TCO**: $0.0\n   - **Key Trade-offs**:\n     - **Higher Context Window**: This model has a larger context window at 128000 tokens, which could be beneficial for handling more complex demonstrations or longer explanations.\n     - **Fine-Tuning Complexity**: The Coder variant might require more computational resources during fine-tuning due to its higher complexity and potentially different architecture.\n\n- **Qwen 2.5 Coder 7B Instruct (Qwen/Qwen2.5-Coder-7B-Instruct)**:\n   - **Monthly TCO**: $0.0\n   - **Key Trade-offs**:\n     - **Larger Context Window**: With a context window of 128000 tokens, this model can handle more complex and longer demonstrations.\n     - **Higher VRAM Requirement**: The larger size (7.1 GB) might be a constraint if you are limited by your local GPU's VRAM capacity.\n\n### Recommendation:\nGiven the constraints and requirements for your project, **Qwen 2.5 Instruct** is the optimal choice due to its efficient use of VRAM, strong reasoning capabilities, and open-weighted architecture which allows for fine-tuning with Unsloth. The zero token API cost when run locally on LM Studio ensures that you don't incur any additional costs.\n\nFor deployment, use the Q4_K_M GGUF format in LM Studio to optimize resource usage. While the Coder variants offer larger context windows and higher VRAM utilization, they come at the expense of potentially more complex fine-tuning processes and possibly increased computational overhead during inference"
+      },
+      {
+        "scenario_name": "Synthèse rapide des demandes entrantes",
+        "expected_ids": [
+          "openai/gpt-4o-mini"
+        ],
+        "selected_model_id": "openai/gpt-4o-mini",
+        "selected_model_name": "GPT-4o Mini",
+        "decision_match": true,
+        "candidate_grounded": true,
+        "constraint_compliant": true,
+        "constraint_failures": [],
+        "elapsed_seconds": 18.977183100010734,
+        "completion_tokens": 762,
+        "generation_tokens_per_second": 40.15348305300216,
+        "output": "### Architectural Recommendation\n\nFor your Synthèse rapide des demandes entrantes project, I recommend using **GPT-4o Mini (openai/gpt-4o-mini)** as the best choice for several reasons:\n\n1. **Context Window and Token Handling**: GPT-4o Mini offers a large context window of 128000 tokens, which is more than sufficient for handling incoming messages in your project. This ensures that you can process long conversations efficiently without truncation issues.\n\n2. **Cost Efficiency**: The cost efficiency is one of the key factors here. GPT-4o Mini has a monthly cost of $4.5, which is significantly lower than DeepSeek V3 at $8.2 and Llama 3.3 70B Instruct at $9.85. This makes it more budget-friendly for your project.\n\n3. **Throughput**: GPT-4o Mini has a throughput of approximately 135 tokens per second, which is fast enough to handle real-time chat scenarios without significant latency issues.\n\n### Deployment and Fine-Tuning Advice\n\nGiven the deployment mode is set to cloud (Max VRAM: None GB), we need to consider how to deploy GPT-4o Mini efficiently. Here are some recommendations:\n\n1. **Quantization**: For cost optimization, you can use quantization techniques such as Q4_K_M or Q8_0 GGUF on the LM Studio. This will reduce the model's VRAM usage without significantly impacting performance.\n\n2. **Deployment Mode**: Since Max VRAM is not available, deploying GPT-4o Mini via the Cloud API would be more suitable. The OpenAI Cloud API provides a cost-efficient way to access and use the model, with costs based on token usage (approximately $0.38 per 1M tokens).\n\n### Monthly Total Cost of Ownership (TCO) and Key Trade-offs\n\nLet's break down the TCO for each candidate:\n\n- **GPT-4o Mini**: $4.5/mo\n- **DeepSeek V3**: $8.2/mo\n- **Llama 3.3 70B Instruct**: $9.85/mo\n\n**Key Trade-offs with the Runner-Up Alternatives:**\n\n1. **GPT-4o Mini vs DeepSeek V3**:\n   - **GPT-4o Mini** offers a better cost-efficiency ratio, making it more suitable for your project's budget constraints.\n   - **DeepSeek V3**, while offering an open-weight model that can be fine-tuned with Unsloth, is significantly more expensive. This makes it less viable given the tight budget.\n\n2. **GPT-4o Mini vs Llama 3.3 70B Instruct**:\n   - **Llama 3.3 70B Instruct** provides a larger context window but at a higher cost, which is not optimal for your project's requirements.\n   - **GPT-4o Mini**, with its balanced performance and cost-efficiency, remains the best choice.\n\n### Conclusion\n\nGiven the constraints of your project (VRAM limitation, budget, latency, context window, tasks), GPT-4o Mini is the most suitable model. It offers a large context window, efficient token handling, and a cost-efficient API that aligns well with your requirements. The recommended deployment mode involves using quantization techniques on LM Studio to optimize VRAM usage while leveraging the OpenAI Cloud API for seamless integration into your cloud environment.\n\nBy choosing GPT-4o Mini, you can achieve optimal performance within your budget constraints, ensuring real-time chat capabilities and efficient token processing without compromising on cost."
+      },
+      {
+        "scenario_name": "Classification sur appareil industriel",
+        "expected_ids": [
+          "Qwen/Qwen2.5-0.5B-Instruct"
+        ],
+        "selected_model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+        "selected_model_name": "Qwen2.5-0.5B-Instruct",
+        "decision_match": true,
+        "candidate_grounded": true,
+        "constraint_compliant": true,
+        "constraint_failures": [],
+        "elapsed_seconds": 9.733880499959923,
+        "completion_tokens": 506,
+        "generation_tokens_per_second": 51.98337908525622,
+        "output": "### Architectural Recommendation for Classification Project\n\n#### Why Qwen2.5-0.5B-Instruct is the Best Choice:\nQwen2.5-0.5B-Instruct is the optimal choice for your classification project due to its balance of performance, resource efficiency, and cost-effectiveness. It matches closely with your requirements (94.8% match), fits within your 3.5 GB VRAM limit, and offers a zero token API cost when run locally on LM Studio. Additionally, it is fine-tunable using Unsloth, which allows for customization to better fit the specific needs of your industrial classification tasks.\n\n#### Deployment Advice:\nGiven that you are deploying this model locally with Max VRAM of 3.5 GB, the best deployment mode would be using Q4_K_M quantization and the GGUF format. This will allow the model to run within your specified VRAM limit while maintaining a balance between performance and resource usage.\n\n**Quantization / Deployment:**\n- Use **Q4_K_M** quantization for 0.5B parameters, which fits comfortably in 3.5 GB VRAM.\n- Utilize the **GGUF** format on LM Studio to leverage its optimized deployment capabilities within your local environment.\n\n#### Monthly Total Cost of Ownership (TCO) and Key Trade-offs:\nGiven that all top candidates have zero token API costs when run locally on LM Studio, the monthly TCO for this project is effectively $0. This makes it a cost-neutral choice in terms of ongoing expenses.\n\n**Key Trade-offs with Runner-Up Alternatives:**\n- **Qwen2.5-1.5B-Instruct**: While it has a larger context window (32768 vs 64000), the increased VRAM requirement (1.5 GB vs 0.9 GB) makes it less suitable for your project due to its higher cost and resource demand.\n- **DeepSeek R1 Distill Qwen 1.5B**: Although it also fits within your VRAM limit, it has a larger context window but still requires more VRAM (2.1 GB vs 1.5 GB). This makes it less efficient in terms of resource utilization compared to Qwen2.5-0.5B-Instruct.\n\nIn conclusion, **Qwen2.5-0.5B-Instruct** is the best choice for your classification project due to its optimal balance between performance, cost, and resource efficiency."
+      },
+      {
+        "scenario_name": "Assistant documentaire souverain",
+        "expected_ids": [
+          "Qwen/Qwen2.5-Coder-7B-Instruct",
+          "meta-llama/Llama-3.1-8B-Instruct",
+          "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
+        ],
+        "selected_model_id": "Qwen/Qwen2.5-Coder-7B-Instruct",
+        "selected_model_name": "Qwen 2.5 Coder 7B Instruct",
+        "decision_match": true,
+        "candidate_grounded": true,
+        "constraint_compliant": true,
+        "constraint_failures": [],
+        "elapsed_seconds": 15.549593499978073,
+        "completion_tokens": 578,
+        "generation_tokens_per_second": 37.1713897215908,
+        "output": "For the Assistant documentaire souverain project, I recommend using Qwen 2.5 Coder 7B Instruct as your primary Large Language Model (LLM). Here's why:\n\n### Why Qwen 2.5 Coder 7B Instruct is the Best Choice:\n1. **VRAM Efficiency**: The model runs in full FP16 mode, which fits within your 20 GB VRAM limit. This ensures optimal performance without needing to compromise on context window or token handling.\n2. **Open-Weights Licensing**: Qwen 2.5 Coder 7B Instruct is licensed under the Apache-2.0 open-source license, allowing for fine-tuning with Unsloth, a powerful tool that can enhance its capabilities further.\n3. **Large Context Window**: The model supports a context window of up to 128k tokens, which is more than sufficient for indexing and reasoning tasks involving large documents or datasets.\n4. **Zero Token API Cost**: Running locally on LM Studio ensures zero token cost when deployed in this mode, aligning with your budget constraints.\n\n### Deployment Advice:\nGiven the model's requirement of full FP16 to fit within 20 GB VRAM, you should deploy it using Q4_K_M quantization format. This is because Q4_K_M quantizes the model to a size that can be comfortably stored and run in 20 GB VRAM while maintaining performance.\n\n### Monthly Total Cost of Ownership (TCO):\n- **Qwen 2.5 Coder 7B Instruct**: $0.0\n- **Llama 3.1 8B Instruct**: $0.0\n- **DeepSeek R1 Distill Qwen 7B**: $0.0\n\nAll three models have a zero token API cost when deployed locally, which is the most significant factor in your budget constraints.\n\n### Key Trade-offs with Runner-Up Alternatives:\n- **Llama 3.1 8B Instruct** and **DeepSeek R1 Distill Qwen 7B**: While these models also fit within your VRAM limit and have similar token handling capabilities, they are slightly less efficient in terms of their FP16 usage (Qwen uses full FP16, while Llama 3.1 is near-lossless Q8_0 GGUF). This could lead to a marginal performance difference but does not affect the overall cost or VRAM efficiency.\n\nIn conclusion, Qwen 2.5 Coder 7B Instruct is the optimal choice for your project due to its efficient use of available VRAM and open-source licensing that allows for further customization with Unsloth. The zero token API cost when deployed locally ensures you stay within your budget constraints while providing a robust solution for indexing and reasoning tasks involving large datasets."
+      },
+      {
+        "scenario_name": "Revue automatisée de dépôts logiciels",
+        "expected_ids": [
+          "moonshotai/kimi-k3.1-pro",
+          "reflection/beam-1.0-501b-a23b",
+          "unbiased/pareto-26.9"
+        ],
+        "selected_model_id": "moonshotai/kimi-k3.1-pro",
+        "selected_model_name": "MoonshotAI: Kimi K3.1 Pro",
+        "decision_match": true,
+        "candidate_grounded": true,
+        "constraint_compliant": true,
+        "constraint_failures": [],
+        "elapsed_seconds": 15.229020500031766,
+        "completion_tokens": 800,
+        "generation_tokens_per_second": 52.531283938998655,
+        "output": "### Architectural Recommendation\n\n#### Why MoonshotAI is the Best Choice:\nMoonshotAI's Kimi K3.1 Pro model stands out as the optimal choice for your Revue automatisée de dépôts logiciels project due to its exceptional context window, robust coding and reasoning capabilities, and cost-effectiveness compared to other models in this list.\n\n- **Context Window**: The 1048k token context is more than sufficient for handling the distributed changes across multiple repositories. This allows your model to understand the broader context of code changes.\n  \n- **Coding Performance**: With a coding benchmark score of 88.0%, MoonshotAI excels in understanding and processing software-related tasks, which aligns perfectly with your project's primary task of analyzing software changes.\n\n- **Reasoning Capability**: The reasoning capability is also strong at 87.0%, ensuring that the model can effectively identify potential risks of regression based on complex code changes.\n\n#### Deployment Advice:\nGiven your deployment mode (cloud) and Max VRAM constraint, it would be best to deploy MoonshotAI using its CloudGB version. This will allow you to leverage the large context window without needing excessive VRAM, which is a key consideration for cloud deployments.\n\n- **Quantization / Deployment**: For optimal performance in the cloud environment, consider deploying Q4_K_M quantized versions of Kimi K3.1 Pro on LM Studio. This approach balances computational efficiency with model size and can be more cost-effective than deploying full precision models directly from Cloud API, which might incur higher costs per token processed.\n\n#### Monthly Total Cost of Ownership (TCO) and Trade-offs:\n- **Current Model Selection**:\n  - **Cost**: $70.0/mo\n  - **Strengths**: High reasoning capability, strong coding benchmark, large context window.\n  \n- **Runner-Up Alternatives**:\n  - **Reflection Beam 1.0 501B A23B (Monthly Cost: $8.0)**:\n    - **Cost**: $8.0/mo\n    - **Strengths**: Large context window, strong coding benchmark, cost-efficient API.\n    \n    This model is significantly cheaper but has a lower reasoning capability and coding benchmark score compared to MoonshotAI.\n\n  - **Pareto 26.9 (Monthly Cost: $62.5)**:\n    - **Cost**: $62.5/mo\n    - **Strengths**: Large context window, strong coding benchmark.\n    \n    Pareto 26.9 is more expensive but offers a larger context window and stronger coding benchmarks compared to MoonshotAI.\n\n### Key Trade-offs:\n- **MoonshotAI** vs **Reflection Beam 1.0 501B A23B**: \n  - **Cost**: $70.0/mo (MoonshotAI) vs $8.0/mo (Reflection).\n  - **Strengths**: Reasoning capability and coding benchmark are slightly higher, but the cost difference is significant.\n  \n- **MoonshotAI** vs **Pareto 26.9**:\n  - **Cost**: $70.0/mo (MoonshotAI) vs $62.5/mo (Pareto).\n  - **Strengths**: Reasoning and coding benchmark are slightly higher, but the context window is smaller.\n\n### Recommendation:\nGiven your constraints and budget of $20.0 per month for 1M tokens, MoonshotAI's Kimi K3.1 Pro model remains the best choice due to its superior reasoning capability and strong coding performance at a cost that aligns well with your monthly budget. If you need to consider alternatives within your budget, Reflection Beam 1.0 501B A23B is a viable option but sacrifices some strength in reasoning and coding benchmarks for lower costs.\n\n### Conclusion:\nDeploy MoonshotAI"
+      },
+      {
+        "scenario_name": "Croisement de subventions longues",
+        "expected_ids": [
+          "deepseek/deepseek-v4.1-flash-1017",
+          "nvidia/nemotron-3.5-super-vl",
+          "mistralai/mistral-large-4-0"
+        ],
+        "selected_model_id": "deepseek/deepseek-v4.1-flash-1017",
+        "selected_model_name": "DeepSeek: DeepSeek V4.1 Flash 1017",
+        "decision_match": true,
+        "candidate_grounded": true,
+        "constraint_compliant": true,
+        "constraint_failures": [],
+        "elapsed_seconds": 16.444181500002742,
+        "completion_tokens": 607,
+        "generation_tokens_per_second": 36.912752392078545,
+        "output": "### Architectural Recommendation for Croisement de subventions longues Project\n\n#### Why DeepSeek V4.1 Flash is the Best Choice:\nDeepSeek V4.1 Flash 1017 stands out as the optimal choice due to its superior performance in both cost-efficiency and context handling, which aligns perfectly with your project's requirements. Here are the key reasons:\n\n- **Cost Efficiency**: The API rate for DeepSeek is ~$0.25/1M tokens, making it significantly more cost-efficient than Nemotron 3.5 Super VL (~$0.31/1M tokens) and Mistral Large 4 (~$0.68/1M tokens). This translates to a monthly cost of $2.56 for DeepSeek, which is the lowest among the top candidates.\n  \n- **Context Window**: All three models have a large context window (1048576 tokens), ensuring that your project can handle complex tasks like extracting criteria from multiple subvention files without truncation issues.\n\n- **Fine-Tuning and Open Weights**: DeepSeek, Nemotron 3.5 Super VL, and Mistral Large 4 all support open weights fine-tuning with Unsloth, allowing for customization to better fit the specific needs of your project.\n\n#### Deployment Advice:\nGiven that you are deploying in a cloud environment without max VRAM constraints, we recommend using Cloud API deployment for DeepSeek V4.1 Flash. This approach leverages the low cost and high performance benefits of the model while minimizing hardware costs.\n\n- **Cloud API**: Use the Cloud API to deploy DeepSeek V4.1 Flash on your cloud platform. This will allow you to fine-tune the model if needed, without incurring additional costs for a dedicated GPU or server with max VRAM.\n\n#### Monthly Total Cost of Ownership (TCO) and Key Trade-offs:\n- **DeepSeek**: $2.56/month\n  - **Nemotron 3.5 Super VL**: $3.85/month\n  - **Mistral Large 4**: $17.50/month\n\n**Key Trade-offs with Runner-Up Alternatives:**\n- **Nemotron 3.5 Super VL**: While Nemotron offers a similar cost-efficiency to DeepSeek, it is significantly more expensive (over twice the cost of DeepSeek). Additionally, its context window and fine-tuning capabilities are comparable but not as advantageous.\n  \n- **Mistral Large 4**: Mistral Large 4 provides a larger context window than both DeepSeek and Nemotron. However, its high monthly costs ($17.50) make it the least cost-effective option among the top candidates.\n\n### Conclusion:\nDeepSeek V4.1 Flash is the best choice for your project due to its superior cost-efficiency and fine-tuning capabilities with open weights. The Cloud API deployment mode allows you to leverage these benefits without incurring additional hardware costs."
+      },
+      {
+        "scenario_name": "Résumé local des échanges de support",
+        "expected_ids": [
+          "meta-llama/Llama-3.1-8B-Instruct",
+          "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B",
+          "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"
+        ],
+        "selected_model_id": "meta-llama/Llama-3.1-8B-Instruct",
+        "selected_model_name": "Llama 3.1 8B Instruct",
+        "decision_match": true,
+        "candidate_grounded": true,
+        "constraint_compliant": true,
+        "constraint_failures": [],
+        "elapsed_seconds": 10.495754599978682,
+        "completion_tokens": 539,
+        "generation_tokens_per_second": 51.354097017578404,
+        "output": "### Architectural Recommendation for Résumé Local des Échanges de Support Project\n\n#### Why the #1 Model (Llama 3.1 8B Instruct) is the Best Choice:\nThe Llama 3.1 8B Instruct model stands out as the optimal choice due to its excellent performance across reasoning and coding tasks, which are core requirements for summarizing support exchanges. It achieves a high context window of 128k tokens, ensuring that your project can handle extensive input data effectively. Additionally, it fits within your available VRAM (7.3GB) with the near-lossless Q8_0 GGUF quantization format (~11.8 GB), making it suitable for deployment on a local system like LM Studio.\n\n#### Deployment Advice:\nFor deploying Llama 3.1 Instruct locally, you can use the Q4_K_M quantization method (which corresponds to Q8_0 GGUF). This approach will allow you to leverage the model's full capabilities within your available VRAM constraints. Ensure that your deployment environment is optimized for local inference performance.\n\n#### Monthly Total Cost of Ownership:\nGiven the Llama 3.1 Instruct model, which runs at no cost due to its open weights and zero token API costs when deployed locally on LM Studio, the monthly total cost of ownership (TCO) will be $0.0. This makes it an ideal choice for your project without any additional financial burden.\n\n#### Key Trade-offs with Runner-Up Alternatives:\n- **DeepSeek R1 Distill Qwen 7B**: Although this model is highly capable in reasoning tasks, its context window of only 128k tokens might be insufficient for handling the complexity and length of support exchange summaries. Additionally, it runs in full FP16 mode within your available VRAM constraints (5.0 GB), leaving less room for other functionalities.\n- **DeepSeek R1 Distill Qwen 1.5B**: This model has a very limited context window at only 6400 tokens and is optimized to run entirely in full precision FP16, which doesn't align well with your VRAM constraints (2.1 GB). Therefore, it would require significant trade-offs or compromises for deployment.\n\n### Summary:\nThe Llama 3.1 Instruct model offers the best balance of performance, cost-efficiency, and flexibility within your project's constraints. It is recommended to deploy this model using Q4_K_M quantization on LM Studio for optimal local inference performance. The monthly TCO remains at $0.0, making it a clear choice without any additional financial burden or trade-offs."
+      },
+      {
+        "scenario_name": "Assistant SQL pour un poste de travail",
+        "expected_ids": [
+          "Qwen/Qwen2.5-3B-Instruct",
+          "Qwen/Qwen2.5-Coder-3B-Instruct",
+          "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"
+        ],
+        "selected_model_id": "Qwen/Qwen2.5-Coder-3B-Instruct",
+        "selected_model_name": "Qwen 2.5 Coder 3B Instruct",
+        "decision_match": true,
+        "candidate_grounded": true,
+        "constraint_compliant": true,
+        "constraint_failures": [],
+        "elapsed_seconds": 15.762145499989856,
+        "completion_tokens": 589,
+        "generation_tokens_per_second": 37.368009323374096,
+        "output": "### Architectural Recommendation for Your SQL Assistant Project\n\n#### Why Qwen 2.5 Coder 3B Instruct is the Best Choice:\nQwen 2.5 Coder 3B Instruct stands out as the optimal choice due to its superior coding performance (81.6%) and strong reasoning capabilities (67.4%), which are crucial for helping analysts with SQL tasks. Its high match score of 99.5% ensures it closely matches your specific requirements, especially considering the context window is also very close to what you need.\n\n### Deployment Advice:\nGiven that your deployment mode is local with a maximum VRAM of 6.0 GB, Qwen 2.5 Coder 3B Instruct can be deployed using the near-lossless quantization format (Q8_0 GGUF) which requires only about 4.2 GB of VRAM. This fits perfectly within your available resources.\n\n#### Quantization / Deployment:\nFor deployment on LM Studio, you would use Q8_0 GGUF, as it is a good balance between performance and memory usage. The zero-token API cost when running locally on LM Studio ensures that there are no additional costs associated with using this model for coding tasks.\n\n### Monthly Total Cost of Ownership (TCO):\n- **Qwen 2.5 Coder 3B Instruct**: $0.0\n- **Runner-Up Alternatives**:\n  - Qwen 2.5 3B Instruct: The near-lossless quantization format requires about 4.2 GB, which is slightly less than the maximum VRAM of 6.0 GB. This model would also require a full GGUF deployment and might incur additional costs if you need to use it in a cloud environment.\n  - DeepSeek R1 Distill Qwen 1.5B: Runs in full FP16, requiring about 5.0 GB VRAM, which is slightly more than your maximum VRAM of 6.0 GB.\n\n### Key Trade-offs:\n- **Qwen 2.5 Coder 3B Instruct**: Best balance between performance and memory usage, no additional costs for local deployment.\n- **Qwen 2.5 3B Instruct**: Requires full GGUF deployment which might incur additional costs if used cloud-based use is necessary.\n- **DeepSeek R1 Distill Qwen 1.5B**: Runs in full FP16 and requires more VRAM, making it less suitable for your current setup.\n\n### Conclusion:\nQwen 2.5 Coder 3B Instruct is the ideal choice given its superior coding performance and strong reasoning capabilities, coupled with efficient deployment options that fit within your available resources (VRAM). This model will provide a robust solution for assisting analysts in writing, correcting, and explaining SQL queries on your local workstation without any additional costs."
+      },
+      {
+        "scenario_name": "Révision multilingue de contenus",
+        "expected_ids": [
+          "deepseek-ai/DeepSeek-V3",
+          "meta-llama/Llama-3.3-70B-Instruct"
+        ],
+        "selected_model_id": "deepseek-ai/DeepSeek-V3",
+        "selected_model_name": "DeepSeek V3",
+        "decision_match": true,
+        "candidate_grounded": true,
+        "constraint_compliant": true,
+        "constraint_failures": [],
+        "elapsed_seconds": 10.760072600038256,
+        "completion_tokens": 552,
+        "generation_tokens_per_second": 51.30076910429372,
+        "output": "### Architectural Recommendation\n\nFor your project of multilingual content revision and reformulation with regular throughput and cost constraints, I recommend **DeepSeek V3** from Deepseek-ai/DeepSeek-V3 as the optimal choice.\n\n#### Why DeepSeek V3 is Best for Your Project:\n\n1. **High Reasoning Capability**: With a reasoning score of 89.1%, DeepSeek V3 excels in understanding and processing complex tasks, which aligns well with your project's requirement to handle multilingual content revision effectively.\n2. **Open-Weights (mit) Fine-Tunable**: This model is fine-tunable using Unsloth, allowing you to customize it further for specific use cases without needing to start from scratch.\n3. **Large Context Window**: The 128k token context window supports handling long and complex content revisions efficiently.\n\n### Deployment Advice:\n\nGiven your deployment mode (cloud) with no maximum VRAM constraints, the best way to deploy DeepSeek V3 is through its API. Here’s how you can proceed:\n- Use the **Q4_K_M** quantization format for deployment on LM Studio or Cloud API.\n- This will optimize performance and cost without requiring significant hardware investment.\n\n### Monthly Total Cost of Ownership (TCO):\n\nFor DeepSeek V3, your monthly TCO is $8.2. Here’s a breakdown:\n- **Model Usage**: ~$0.69 per 1M tokens\n- **Quantization & Deployment** (Q4_K_M): ~$7.53/mo\n\n### Key Trade-offs with Runner-Up Alternatives:\n\n#### DeepSeek R1 Distill Qwen 7B:\n- **Reasoning Capability**: While it has a high reasoning score of 89.5%, its cost is $0.0, making it free to use.\n- **Deployment Mode**: Can be self-hosted or accessed via serverless open-weight providers, which might require additional setup and maintenance costs.\n\n#### Llama 3.3 70B Instruct:\n- **Reasoning Capability**: Although high at 86.5%, the cost is significantly higher at ~$9.85/mo.\n- **Deployment Mode**: Requires a large amount of VRAM (42GB), which might not be feasible given your cloud deployment mode.\n\n### Conclusion:\n\n**DeepSeek V3** offers a balanced approach with high reasoning capabilities, fine-tuning flexibility, and cost-efficiency through its API. The Q4_K_M quantization format ensures optimal performance without requiring additional hardware investment. While the runner-up alternatives have lower costs, DeepSeek V3’s balance in terms of functionality and deployment options makes it the best choice for your project."
+      }
+    ]
+  },
+  "metrics": {
+    "qwen2.5-3b-advisor": {
+      "total": 12,
+      "top1_correct": 12,
+      "top1_accuracy": 1.0,
+      "top1_wilson_95": [
+        0.7574992425007574,
+        1.0
+      ],
+      "grounded": 12,
+      "grounded_rate": 1.0,
+      "constraint_compliant": 12,
+      "constraint_compliance_rate": 1.0,
+      "mean_latency_seconds": 14.498989858329878,
+      "median_latency_seconds": 15.06211749999784,
+      "mean_generation_tokens_per_second": 42.29550779432191,
+      "mean_completion_tokens": 591.75
+    },
+    "qwen2.5-3b-instruct": {
+      "total": 12,
+      "top1_correct": 12,
+      "top1_accuracy": 1.0,
+      "top1_wilson_95": [
+        0.7574992425007574,
+        1.0
+      ],
+      "grounded": 12,
+      "grounded_rate": 1.0,
+      "constraint_compliant": 12,
+      "constraint_compliance_rate": 1.0,
+      "mean_latency_seconds": 14.759961774999587,
+      "median_latency_seconds": 15.462581999978283,
+      "mean_generation_tokens_per_second": 44.79740460814015,
+      "mean_completion_tokens": 646.5
+    }
+  },
+  "conclusion": "Sur ce jeu de 12 cas, le modèle affiné atteint 12/12 décisions conformes au moteur (100.0 %), contre 12/12 (100.0 %) pour le modèle de base. L'écart observé est de +0.0 points. Avec un seul échantillon de génération par scénario, cet écart est indicatif, pas une preuve de supériorité."
+}
